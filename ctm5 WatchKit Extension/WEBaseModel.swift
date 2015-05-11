@@ -21,6 +21,9 @@ class WEBaseModel: NSObject {
     var createdAt: NSDate? = nil
     var lastUpdated: NSDate? = nil
     
+    var cursor: Int = 0
+    var maxCount: Int = 20
+    
     var location: String? = nil
     var latitude: Double = 0.0
     var longitude: Double = 0.0
@@ -31,6 +34,7 @@ class WEBaseModel: NSObject {
     var strings = ["objectIdentifier", "title", "originatorId", "originatorName", "text", "imageId", "location"]
     var dates = ["createdAt", "lastUpdated"]
     var doubles = ["latitude", "longitude"]
+    var integers = ["cursor", "maxCount"]
     var itemsKey: String = "items"
     
     var items: [WEBaseModel] = [WEBaseModel]()
@@ -57,9 +61,12 @@ class WEBaseModel: NSObject {
         for key in doubles {
             if let value = plist[key] as? Double { self.setValue(value, forKey: key) }
         }
-        self.appendNestedItems()
+        for key in integers {
+            if let value = plist[key] as? Int { self.setValue(value, forKey: key) }
+        }
+        self.appendNestedItems(plist)
     }
-    func appendNestedItems(){
+    func appendNestedItems(plist: [NSObject: AnyObject]){
         // Override this
         println("appendNestedItems() probably needs to be overridden in \(self.className)")
         self.items = [WEBaseModel]()
@@ -79,6 +86,9 @@ class WEBaseModel: NSObject {
         }
         for key in doubles {
             if let value = self.valueForKey(key) as? Double { plist[key] = value }
+        }
+        for key in integers {
+            if let value = self.valueForKey(key) as? Int { plist[key] = value }
         }
         var itemsPlist = [ [NSObject : AnyObject] ]()
         if nested && self.items.count > 0 {

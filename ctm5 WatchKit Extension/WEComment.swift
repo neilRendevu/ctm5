@@ -26,8 +26,27 @@ class WEComment: WEBaseModel {
             }
         }
     }
+    override func appendNestedItems(plist: [NSObject : AnyObject]) {
+    
+    }
     override func plistDataOfInstance() -> [NSObject : AnyObject] {
-        var plist: [NSObject : AnyObject] = super.plist
+        // var plist: [NSObject : AnyObject] = super.plistDataOfInstance()
+        var plist = [NSObject : AnyObject]()
+        for key in strings {
+            if let value = self.valueForKey(key) as? String { plist[key] = value }
+        }
+        for key in dates {
+            if let value = self.valueForKey(key) as? NSDate { plist[key] = value }
+        }
+        for key in doubles {
+            if let value = self.valueForKey(key) as? Double { plist[key] = value }
+        }
+        for key in integers {
+            if let value = self.valueForKey(key) as? Int { plist[key] = value }
+        }
+        var itemsPlist = [ [NSObject : AnyObject] ]()
+
+        plist[self.itemsKey] = itemsPlist
         if let commentType: WECommentType = self.commentType {
             plist[self.commentTypeKey] = commentType.rawValue
         }

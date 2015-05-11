@@ -26,7 +26,7 @@ class WERendevu: WEBaseModel {
             }
         }
     }
-    override func appendNestedItems() {
+    override func appendNestedItems(plist: [NSObject : AnyObject]) {
         self.items = [WEComment]()
         if let itemsPlist = plist[self.itemsKey] as? [ [NSObject : AnyObject]] {
             for itemPlist in itemsPlist {
@@ -35,7 +35,30 @@ class WERendevu: WEBaseModel {
         }
     }
     override func plistDataOfInstance() -> [NSObject : AnyObject] {
-        var plist: [NSObject : AnyObject] = super.plistDataOfInstance()
+        // var plist: [NSObject : AnyObject] = super.plistDataOfInstance()
+        var plist = [NSObject : AnyObject]()
+        for key in strings {
+            if let value = self.valueForKey(key) as? String { plist[key] = value }
+        }
+        for key in dates {
+            if let value = self.valueForKey(key) as? NSDate { plist[key] = value }
+        }
+        for key in doubles {
+            if let value = self.valueForKey(key) as? Double { plist[key] = value }
+        }
+        for key in integers {
+            if let value = self.valueForKey(key) as? Int { plist[key] = value }
+        }
+        var itemsPlist = [ [NSObject : AnyObject] ]()
+        if nested && self.items.count > 0 {
+            if let items = self.items as? [WEComment] {
+                for item in items {
+                    itemsPlist.append(item.plist)
+                }
+            }
+
+        }
+        plist[self.itemsKey] = itemsPlist
         if let privacyType: WERendevuPrivacyType = self.privacyType {
             plist[self.privacyTypeKey] = privacyType.rawValue
         }

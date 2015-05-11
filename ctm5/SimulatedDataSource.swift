@@ -10,9 +10,10 @@ import Foundation
 
 class SimulatedDataSource: NSObject {
     var rendevus: [WERendevu] = [WERendevu]()
+    var rendevuCollection: WERendevuCollection? = nil
     override init() {
         super.init()
-        makeEm()
+        //makeEm()
     }
     class var sharedInstance: SimulatedDataSource {
         struct Singleton {
@@ -20,6 +21,76 @@ class SimulatedDataSource: NSObject {
         }
         return Singleton.instance
     }
+    
+    func makeRendevuCollection() -> WERendevuCollection {
+        var plist = [NSObject : AnyObject]()
+        plist["objectIdentifier"] = "Collection_Identifier_1"
+        plist["text"] = "Description of Rendevu Demonstration Collection"
+        plist["originatorId"] = "potentially some useful ID info"
+        plist["originatorName"] = "Public Rendevus"
+        plist["title"] = "Rendevu Demonstration Collection"
+        plist["createdAt"] = NSDate()
+        plist["lastUpdated"] = NSDate()
+        plist["cursor"] = 0
+        plist["maxCount"] = 20
+        plist["location"] = "San Francisco"
+        plist["latitude"] = Double(37.9)
+        plist["longitude"] = Double(-121.9)
+        
+        
+        var seed = [NSObject : AnyObject]()
+        seed["objectIdentifier"] = "Rendevu_"
+        seed["title"] = "Rendevu_Title_"
+        seed["originatorId"] = "yasharsID"
+        seed["originatorName"] = "Yashar"
+        seed["text"] = "This is a fun rendevu"
+        seed["cursor"] = Int(0)
+        seed["maxCount"] = Int(20)
+        seed["createdAt"] = NSDate()
+        seed["lastUpdated"] = NSDate()
+        seed["location"] = "San Diego"
+        seed["latitude"] = Double(33.0)
+        seed["longitude"] = Double(-116.5)
+        plist["items"] = createRendevus2(seed)
+        var r = plist["items"] as! [ [NSObject : AnyObject] ]
+        // println(r)
+        return WERendevuCollection(plist: plist)
+    }
+    
+    func createRendevus2(plist: [NSObject: AnyObject]) -> [ [ NSObject : AnyObject ] ]{
+        var rendevus = [ [ NSObject : AnyObject ] ]()
+        for var index = 0; index < 20; ++index {
+            var item = [NSObject : AnyObject]()
+            item = plist
+            item["items"] = createComments2()
+            rendevus.append(item)
+        }
+        return rendevus
+    }
+    
+    func createComments2() -> [ [NSObject: AnyObject]] {
+        var seed = [NSObject : AnyObject]()
+        seed["objectIdentifier"] = "Comment_"
+        seed["title"] = "Comment_Title_"
+        seed["originatorId"] = "yasharsID"
+        seed["originatorName"] = "Yashar"
+        seed["text"] = "Comment text"
+        seed["cursor"] = Int(0)
+        seed["maxCount"] = Int(20)
+        seed["createdAt"] = NSDate()
+        seed["lastUpdated"] = NSDate()
+        seed["location"] = "San Diego"
+        seed["latitude"] = Double(33.0)
+        seed["longitude"] = Double(-116.5)
+        var comments = [ [NSObject: AnyObject]]()
+        for var index = 0; index < 20; ++index {
+            var item = [NSObject : AnyObject]()
+            item = seed
+            comments.append(item)
+        }
+        return comments
+    }
+    
     
     func makeEm() -> SimulatedDataSource {
         var dictionary = [NSObject : AnyObject]()
