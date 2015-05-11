@@ -91,11 +91,13 @@ class WEBaseModel: NSObject {
             if let value = self.valueForKey(key) as? Int { plist[key] = value }
         }
         var itemsPlist = [ [NSObject : AnyObject] ]()
+        /*
         if nested && self.items.count > 0 {
             for item in items {
                 itemsPlist.append(item.plist)
             }
         }
+*/
         plist[self.itemsKey] = itemsPlist
         return plist
     }

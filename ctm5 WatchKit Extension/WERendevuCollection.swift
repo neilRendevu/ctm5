@@ -27,22 +27,8 @@ class WERendevuCollection: WEBaseModel {
         }
     }
     override func plistDataOfInstance() -> [NSObject : AnyObject] {
-        // var plist: [NSObject : AnyObject] = super.plistDataOfInstance()
-        var plist = [NSObject : AnyObject]()
-        for key in strings {
-            if let value = self.valueForKey(key) as? String { plist[key] = value }
-        }
-        for key in dates {
-            if let value = self.valueForKey(key) as? NSDate { plist[key] = value }
-        }
-        for key in doubles {
-            if let value = self.valueForKey(key) as? Double { plist[key] = value }
-        }
-        for key in integers {
-            if let value = self.valueForKey(key) as? Int { plist[key] = value }
-        }
+        var plist: [NSObject : AnyObject] = super.plistDataOfInstance()
         var itemsPlist = [ [NSObject : AnyObject] ]()
-        println(self.items.count)
         if nested && self.items.count > 0 {
             if let items = self.items as? [WERendevu] {
                 println("Made it here")
@@ -50,8 +36,8 @@ class WERendevuCollection: WEBaseModel {
                     itemsPlist.append(item.plist)
                 }
             }
-            plist[self.itemsKey] = itemsPlist
         }
+        plist[self.itemsKey] = itemsPlist
         return plist
     }
 }
