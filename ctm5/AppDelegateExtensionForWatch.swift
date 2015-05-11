@@ -39,14 +39,18 @@ extension AppDelegate {
 
 
 class WERequestHandler {
+    var collection = SimulatedDataSource.sharedInstance
     class var sharedInstance: WERequestHandler {
         struct Singleton {
             static let instance = WERequestHandler()
         }
         return Singleton.instance
     }
+    init() {
+        self.collection.makeRendevuCollection()
+    }
     func getRendevus(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
-        println("Need to implement getRendevus()")
+        reply (self.collection.rendevuCollection!.plist )
     }
     func getRendevu(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
         println("Need to implement getRendevu()")

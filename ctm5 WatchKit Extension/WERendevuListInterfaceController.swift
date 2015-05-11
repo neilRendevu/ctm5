@@ -39,9 +39,12 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
     override func willActivate() {
         super.willActivate()
         self.checkLoginStatus()
+        println("activate")
         if self.networkStatus == WENetworkStatus.Loaded {
+            println("populate")
             populateInterface()
         } else {
+            println("reload")
             self.reload()
         }
     }
@@ -96,7 +99,7 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
                 WKInterfaceController.openParentApplication(userInfo, reply: { (plist: [NSObject : AnyObject]!, error: NSError!) -> Void in
                     if error == nil {
                         if plist != nil {
-                            if let collectionPlist = plist["rendevus"] as? [NSObject] {
+            
                                 var newCollection = WERendevuCollection(plist: plist)
                                 if self.networkStatus != WENetworkStatus.Loaded {
                                     self.incomingCollection = newCollection
@@ -105,7 +108,7 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
                                         self.populateInterface()
                                     }
                                 }
-                            }
+                            
                         }
                     } else {
                         println(error)
@@ -161,7 +164,7 @@ extension WERendevuListInterfaceController {
                 if let row = self.listTable.rowControllerAtIndex(index) as? WERendevuRow {
                     if let derivedImage: WEDerivedImage = row.derivedImage {
                         if derivedImage.derivedImageName == transferredImageName {
-                            row.image.setImageNamed(transferredImageName)
+                            row.rowImage.setImageNamed(transferredImageName)
                         }
                     }
                 }

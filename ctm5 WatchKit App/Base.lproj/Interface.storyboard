@@ -63,15 +63,32 @@
                                                 </items>
                                                 <color key="backgroundColor" red="0.21702133539999999" green="0.24965625280000001" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
                                             </group>
+                                            <connections>
+                                                <outlet property="locationLabel" destination="CV7-9e-9Ag" id="q7a-bD-qFw"/>
+                                                <outlet property="originatorNameLabel" destination="qyf-uo-7dm" id="9V6-cP-ZPr"/>
+                                                <outlet property="rowImage" destination="X6f-3d-WCd" id="ure-ih-RDP"/>
+                                                <outlet property="rowTitle" destination="ZzE-62-kh0" id="9Xc-3z-Lf8"/>
+                                            </connections>
                                         </tableRow>
                                     </items>
                                 </table>
                                 <button width="1" alignment="left" title="Refresh" id="R5c-ge-nT2">
                                     <color key="backgroundColor" red="0.48981888109999999" green="0.19073618919999999" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="refreshButtonPressed" destination="AgC-eL-Hgc" id="JE5-Lt-0ID"/>
+                                    </connections>
                                 </button>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="listTable" destination="8bP-5w-zWZ" id="uha-W1-VQU"/>
+                        <outlet property="loginGroup" destination="wS5-Jc-AUb" id="imz-Dn-o4I"/>
+                        <outlet property="networkLoadingGroup" destination="42r-p9-82D" id="cqo-cZ-C8U"/>
+                        <outlet property="networkLoadingStatusLabel" destination="Qlg-Kz-Et8" id="Iig-XD-Pzh"/>
+                        <outlet property="noRendevusGroup" destination="aD6-St-1Tz" id="qcg-wO-o8e"/>
+                        <outlet property="refreshButton" destination="R5c-ge-nT2" id="WtZ-bH-yQk"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
