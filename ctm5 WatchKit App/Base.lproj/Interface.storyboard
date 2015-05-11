@@ -1,21 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14A389" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--RendevuListController-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="RendevuListController" id="AgC-eL-Hgc" customClass="WERendevuListInterfaceController" customModule="ctm5_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="0.0" id="NIl-0l-WAt">
+                            <items>
+                                <group width="1" alignment="center" id="wS5-Jc-AUb">
+                                    <items>
+                                        <label alignment="center" text="Oops. Log-in on your iPhone" textAlignment="center" numberOfLines="2" id="ha2-V2-1xo">
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" red="1" green="0.054662370580000001" blue="0.2698217691" alpha="1" colorSpace="calibratedRGB"/>
+                                </group>
+                                <group width="1" alignment="center" id="42r-p9-82D">
+                                    <items>
+                                        <label alignment="center" text="Loading" textAlignment="center" id="Qlg-Kz-Et8">
+                                            <color key="textColor" red="1" green="0.054662370580000001" blue="0.2698217691" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" red="0.30421643809999999" green="1" blue="0.33335665689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </group>
+                                <group width="1" alignment="center" id="aD6-St-1Tz">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="No Rendevus :-(" textAlignment="center" id="m5Q-or-veF"/>
+                                    </items>
+                                    <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </group>
+                                <table alignment="left" id="8bP-5w-zWZ">
+                                    <items>
+                                        <tableRow identifier="RendevuRow" id="dAp-7h-r8f" customClass="WERendevuRow" customModule="ctm5_WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="1" id="X2S-Ti-3HR">
+                                                <items>
+                                                    <group width="1" alignment="left" id="Mgr-RE-yq6">
+                                                        <items>
+                                                            <label width="1" alignment="left" text="Originator" id="qyf-uo-7dm"/>
+                                                        </items>
+                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </group>
+                                                    <group width="1" alignment="left" id="OdT-dy-4jB">
+                                                        <items>
+                                                            <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="icon196x196.png" contentMode="scaleAspectFit" id="X6f-3d-WCd"/>
+                                                            <label alignment="right" text="Rendevu Title" textAlignment="right" numberOfLines="2" id="ZzE-62-kh0"/>
+                                                        </items>
+                                                    </group>
+                                                    <group width="1" alignment="left" layout="vertical" id="7Br-QI-UUz">
+                                                        <items>
+                                                            <label alignment="right" text="Location" textAlignment="right" id="CV7-9e-9Ag">
+                                                                <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                                <color key="backgroundColor" red="0.21702133539999999" green="0.24965625280000001" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                                <button width="1" alignment="left" title="Refresh" id="R5c-ge-nT2">
+                                    <color key="backgroundColor" red="0.48981888109999999" green="0.19073618919999999" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModuleProvider="target">
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="ctm5_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group alignment="left" id="t8f-Gd-c4y"/>
                         <group alignment="left" id="uCw-4Q-Ouw"/>
@@ -44,7 +108,7 @@
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
-                <controller id="gdX-wl-uQE" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="ctm5_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>
