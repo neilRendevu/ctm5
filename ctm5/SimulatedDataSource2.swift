@@ -50,7 +50,7 @@ class SimulatedDataSource2: NSObject {
         var plist = [ [NSObject : AnyObject] ]()
         for var index = 0; index < count; ++index {
             var item = rendevuSeed()
-            item["objectIdentifier"] = index
+            item["objectIdentifier"] = String(index)
             let peopleIndex = index % users.count
             item["originatorName"] = self.users[peopleIndex]
             item["title"] = ("\(self.users[peopleIndex])'s Big Rendevu")
@@ -77,9 +77,9 @@ class SimulatedDataSource2: NSObject {
     }
     func makeComments(count: Int) -> [ [NSObject : AnyObject] ]{
         var plist = [ [NSObject : AnyObject] ]()
-        for var index = 0; index < count; ++index {
+        for var index: Int = 0; index < count; ++index {
             var item = commentSeed()
-            item["objectIdentifier"] = index
+            item["objectIdentifier"] = String(index)
             let peopleIndex = index % users.count
             item["originatorName"] = self.users[peopleIndex]
             item["title"] = ("\(self.users[peopleIndex])'s Important Comment")
@@ -89,9 +89,9 @@ class SimulatedDataSource2: NSObject {
             item["imageId"] = self.images[pictureIndex]
             
             var latitude = item["latitude"] as! Double
-            item["latitude"] = latitude - 0.1 * Double(index)
+            item["latitude"] = latitude + 0.05 * Double(index)
             var longitude = item["longitude"] as! Double
-            item["longitude"] = longitude - 0.1 * Double(index)
+            item["longitude"] = longitude + 0.05 * Double(index)
             if (index == 0) || (index % 4 != 0) {
                 item["latitude"] = 0
                 item["longitude"] = 0
@@ -121,7 +121,14 @@ extension SimulatedDataSource2: WatchAPIProtocol {
     func retrieveRendevus(requestPlist: [NSObject : AnyObject]) -> [NSObject : AnyObject] {
         if let rendevuCollection = self.collections["Public Rendevus"] {
             var response = rendevuCollection.plist
-            //response["items"] = [ [NSObject: AnyObject]]()
+            if var rendevus = response["items"] as? [[NSObject : AnyObject] ]{
+                for rendevu in rendevus {
+                    if var comments = rendevu["items"] as? [ [NSObject : AnyObject]] {
+                        comments.removeAll(keepCapacity: false)
+                    }
+
+                }
+            }
             return response
         }
         println("No collection found!")
@@ -129,10 +136,12 @@ extension SimulatedDataSource2: WatchAPIProtocol {
     }
     func retrieveRendevuAndComments(requestPlist: [NSObject : AnyObject]) -> [NSObject : AnyObject] {
         if let rendevuCollection = self.collections["Public Rendevus"] {
-            if let objectIdentifier = requestPlist["objectIdentifier"] as? Int {
-                let items = rendevuCollection.items
-                if items.count > objectIdentifier {
-                    return items[objectIdentifier].plist
+            if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
+                if let index = objectIdentifier.toInt() {
+                    let items = rendevuCollection.items
+                    if items.count > index {
+                        return items[index].plist
+                    }
                 }
             }
         }

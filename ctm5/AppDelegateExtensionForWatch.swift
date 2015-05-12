@@ -54,11 +54,11 @@ class WERequestHandler {
         // reply (self.collection.rendevuCollection!.plist )
     }
     func getRendevuWithComments(requestPlist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
-        var plistResponse = [NSObject: AnyObject]()
         if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
-            
+            reply(self.collection.retrieveRendevuAndComments(requestPlist))
+        } else {
+            reply([NSObject: AnyObject]())
         }
-        println("Need to implement getRendevu()")
     }
     func getComments(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
         println("Need to implement getComments()")
