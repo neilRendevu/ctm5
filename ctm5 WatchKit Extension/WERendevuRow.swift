@@ -12,6 +12,7 @@ import WatchKit
 class WERendevuRow: WEBaseRow {
 
     @IBOutlet weak var originatorNameLabel: WKInterfaceLabel!
+    @IBOutlet weak var timeLabel: WKInterfaceLabel!
     @IBOutlet weak var rowImage: WKInterfaceImage!
     @IBOutlet weak var rowTitle: WKInterfaceLabel!
     @IBOutlet weak var locationLabel: WKInterfaceLabel!
@@ -31,7 +32,10 @@ class WERendevuRow: WEBaseRow {
             if let originator: String = rendevu.originatorName { self.originatorNameLabel.setText(originator)}
             if let title: String = rendevu.title {self.rowTitle.setText(title)}
             if let location:String = rendevu.location {self.locationLabel.setText(location)}
-            println(rendevu.toString())
+            if let date:NSDate = rendevu.createdAt {
+                self.timeLabel.setText(rendevu.dateFormatter.stringFromDate(date))
+            }
+
             if let imageId: String = rendevu.imageId {
                 self.derivedImage = WEDerivedImage(imageId: imageId, width: self.imageWidth, height: self.imageHeight)
                 if let size = device.cachedImages[self.derivedImage!.derivedImageName] as? Int {

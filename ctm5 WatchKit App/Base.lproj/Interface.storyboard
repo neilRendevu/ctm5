@@ -35,6 +35,13 @@
                                     </items>
                                     <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </group>
+                                <group width="1" alignment="left" id="kDQ-w3-6ut">
+                                    <items>
+                                        <label width="1" alignment="left" text="CollectionName" id="uRp-UY-Jr1">
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                    </items>
+                                </group>
                                 <table alignment="left" id="8bP-5w-zWZ">
                                     <items>
                                         <tableRow identifier="RendevuRow" id="dAp-7h-r8f" customClass="WERendevuRow" customModule="ctm5_WatchKit_Extension">
@@ -42,7 +49,11 @@
                                                 <items>
                                                     <group width="1" alignment="left" id="Mgr-RE-yq6">
                                                         <items>
-                                                            <label width="1" alignment="left" text="Originator" id="qyf-uo-7dm"/>
+                                                            <label alignment="left" verticalAlignment="center" text="Originator" id="qyf-uo-7dm"/>
+                                                            <label alignment="right" verticalAlignment="center" text="TIme" textAlignment="right" id="wEl-La-EQl">
+                                                                <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                            </label>
                                                         </items>
                                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </group>
@@ -68,6 +79,7 @@
                                                 <outlet property="originatorNameLabel" destination="qyf-uo-7dm" id="9V6-cP-ZPr"/>
                                                 <outlet property="rowImage" destination="X6f-3d-WCd" id="ure-ih-RDP"/>
                                                 <outlet property="rowTitle" destination="ZzE-62-kh0" id="9Xc-3z-Lf8"/>
+                                                <outlet property="timeLabel" destination="wEl-La-EQl" id="F2y-Kx-2U1"/>
                                             </connections>
                                         </tableRow>
                                     </items>
@@ -82,6 +94,8 @@
                         </group>
                     </items>
                     <connections>
+                        <outlet property="collectionGroup" destination="kDQ-w3-6ut" id="seA-B8-wAh"/>
+                        <outlet property="collectionNameLabel" destination="uRp-UY-Jr1" id="Jbi-9k-ocv"/>
                         <outlet property="listTable" destination="8bP-5w-zWZ" id="uha-W1-VQU"/>
                         <outlet property="loginGroup" destination="wS5-Jc-AUb" id="imz-Dn-o4I"/>
                         <outlet property="networkLoadingGroup" destination="42r-p9-82D" id="cqo-cZ-C8U"/>

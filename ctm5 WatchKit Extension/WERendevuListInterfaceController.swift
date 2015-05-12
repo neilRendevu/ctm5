@@ -17,6 +17,8 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
     @IBOutlet weak var listTable: WKInterfaceTable!
     @IBOutlet weak var refreshButton: WKInterfaceButton!
     @IBOutlet weak var noRendevusGroup: WKInterfaceGroup!
+    @IBOutlet weak var collectionGroup: WKInterfaceGroup!
+    @IBOutlet weak var collectionNameLabel: WKInterfaceLabel!
     
     @IBAction func refreshButtonPressed() {
         self.reset()
@@ -56,6 +58,7 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
         self.networkStatus = WENetworkStatus.Loading
         if self.active {
             self.noRendevusGroup.setHidden(true)
+            self.collectionGroup.setHidden(true)
             self.networkLoadingStatusLabel.setText("Loading")
             self.networkLoadingGroup.setHidden(false)
         }
@@ -66,6 +69,7 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
             self.noRendevusGroup.setHidden(true)
             self.networkLoadingStatusLabel.setText("No Access")
             self.networkLoadingGroup.setHidden(false)
+            self.collectionGroup.setHidden(true)
         }
     }
     
@@ -106,7 +110,7 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
                             
                         }
                     } else {
-                        println(error)
+                        println("Error in openParent response: \(error)")
                     }
                 })
             } else {
@@ -124,6 +128,12 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
             var newCollection = self.incomingCollection
             if self.active {
                 self.resizeTable(self.listTable, newSize: newCollection.items.count, rowTypeName: self.rowName!)
+                if let collectionName = newCollection.title {
+                    self.collectionNameLabel.setText(collectionName)
+                    self.collectionGroup.setHidden(false)
+                } else {
+                    self.collectionGroup.setHidden(true)
+                }
                 if newCollection.items.count == 0 {
                     self.noRendevusGroup.setHidden(false)
                 } else {
@@ -132,13 +142,12 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
                         if self.active {
                             if let row = listTable.rowControllerAtIndex(index) as? WERendevuRow {
                                 let imageToFetch: WEDerivedImage? = row.configure(item)
-                                println("Image: \(imageToFetch?.derivedImageName)")
                                 if imageToFetch != nil {
                                     println("Fetching Image \(imageToFetch)")
                                     self.fetchImage(imageToFetch!, callback: sequenceThroughRowTypes)
                                 }
                             } else {
-                                println("No image found")
+                                println("No row found")
                             }
                         }
                     }
