@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Neil Weintraut. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class WatchAPIProtocol: NSObject {
-
+protocol WatchAPIProtocol {
+    func retrieveRendevus(requestPlist: [NSObject : AnyObject]) -> [NSObject : AnyObject]
+    func retrieveRendevuAndComments(requestPlist: [NSObject : AnyObject]) -> [NSObject : AnyObject]
+    func retrieveImage(imageId: String) -> UIImage?
 }
