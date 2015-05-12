@@ -51,6 +51,8 @@ class SimulatedDataSource2: NSObject {
         for var index = 0; index < count; ++index {
             var item = rendevuSeed()
             item["objectIdentifier"] = String(index)
+            item["objectIdentifier"] =  String(stringInterpolationSegment: NSDate.timeIntervalSinceReferenceDate())
+
             let peopleIndex = index % users.count
             item["originatorName"] = self.users[peopleIndex]
             item["title"] = ("\(self.users[peopleIndex])'s Big Rendevu")
@@ -80,6 +82,7 @@ class SimulatedDataSource2: NSObject {
         for var index: Int = 0; index < count; ++index {
             var item = commentSeed()
             item["objectIdentifier"] = String(index)
+         item["objectIdentifier"] =  String(stringInterpolationSegment: NSDate.timeIntervalSinceReferenceDate())
             let peopleIndex = index % users.count
             item["originatorName"] = self.users[peopleIndex]
             item["title"] = ("\(self.users[peopleIndex])'s Important Comment")
@@ -137,12 +140,20 @@ extension SimulatedDataSource2: WatchAPIProtocol {
     func retrieveRendevuAndComments(requestPlist: [NSObject : AnyObject]) -> [NSObject : AnyObject] {
         if let rendevuCollection = self.collections["Public Rendevus"] {
             if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
+                let items = rendevuCollection.items
+                for item in items {
+                    if item.objectIdentifier == objectIdentifier {
+                        return item.plist
+                    }
+                }
+                /*
                 if let index = objectIdentifier.toInt() {
-                    let items = rendevuCollection.items
+
                     if items.count > index {
                         return items[index].plist
                     }
                 }
+*/
             }
         }
         return [NSObject : AnyObject]()

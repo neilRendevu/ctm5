@@ -18,11 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-       // var dataSource = SimulatedDataSource.sharedInstance
-       // dataSource.rendevuCollection = dataSource.makeRendevuCollection()
-        // print(dataSource.rendevuCollection!.plist)
-        //println(dataSource.rendevuCollection!.items[0].items[0].plist)
-        
         return true
     }
 

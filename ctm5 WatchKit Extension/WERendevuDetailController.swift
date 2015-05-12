@@ -108,6 +108,7 @@ class WERendevuDetailController: WEBaseInterfaceController {
         if self.networkStatus == WENetworkStatus.Loaded {
             var newCollection = self.incommingCollection
             if self.active {
+                self.setTitle("Rendevus")
                 self.resizeTable(self.itemsTable, newSize: newCollection.items.count, rowTypeName: self.rowName!)
                 
                 self.collection = newCollection
