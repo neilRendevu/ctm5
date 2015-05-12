@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281477DF1B01C52400DDB274 /* Pennye.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281477D91B01C52400DDB274 /* Pennye.jpg */; };
+		281477E01B01C52400DDB274 /* Gigi.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 281477DA1B01C52400DDB274 /* Gigi.jpeg */; };
+		281477E11B01C52400DDB274 /* airplane.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 281477DB1B01C52400DDB274 /* airplane.jpeg */; };
+		281477E21B01C52400DDB274 /* Matthew.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281477DC1B01C52400DDB274 /* Matthew.jpg */; };
+		281477E31B01C52400DDB274 /* Namit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281477DD1B01C52400DDB274 /* Namit.jpg */; };
+		281477E41B01C52400DDB274 /* SuperBowl.png in Resources */ = {isa = PBXBuildFile; fileRef = 281477DE1B01C52400DDB274 /* SuperBowl.png */; };
 		2859D4DD1B00371A0018236A /* AppDelegateExtensionForWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859D4DC1B00371A0018236A /* AppDelegateExtensionForWatch.swift */; };
 		2859D4DF1B0037E30018236A /* WERequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859D4DE1B0037E30018236A /* WERequestType.swift */; };
 		2859D4E01B0038120018236A /* WERequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859D4DE1B0037E30018236A /* WERequestType.swift */; };
@@ -92,6 +98,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		281477D91B01C52400DDB274 /* Pennye.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pennye.jpg; sourceTree = "<group>"; };
+		281477DA1B01C52400DDB274 /* Gigi.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Gigi.jpeg; sourceTree = "<group>"; };
+		281477DB1B01C52400DDB274 /* airplane.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = airplane.jpeg; sourceTree = "<group>"; };
+		281477DC1B01C52400DDB274 /* Matthew.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matthew.jpg; sourceTree = "<group>"; };
+		281477DD1B01C52400DDB274 /* Namit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Namit.jpg; sourceTree = "<group>"; };
+		281477DE1B01C52400DDB274 /* SuperBowl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SuperBowl.png; sourceTree = "<group>"; };
 		2859D4DC1B00371A0018236A /* AppDelegateExtensionForWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensionForWatch.swift; sourceTree = "<group>"; };
 		2859D4DE1B0037E30018236A /* WERequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WERequestType.swift; sourceTree = "<group>"; };
 		2859D4E11B003E9F0018236A /* SimulatedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatedDataSource.swift; sourceTree = "<group>"; };
@@ -290,6 +302,12 @@
 		28F829A61B001F0B001D6630 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				281477D91B01C52400DDB274 /* Pennye.jpg */,
+				281477DA1B01C52400DDB274 /* Gigi.jpeg */,
+				281477DB1B01C52400DDB274 /* airplane.jpeg */,
+				281477DC1B01C52400DDB274 /* Matthew.jpg */,
+				281477DD1B01C52400DDB274 /* Namit.jpg */,
+				281477DE1B01C52400DDB274 /* SuperBowl.png */,
 				28F829B01B002168001D6630 /* beachparty.jpeg */,
 				28F829B11B002168001D6630 /* umesh.jpeg */,
 				28F829B21B002168001D6630 /* yashar.jpeg */,
@@ -519,14 +537,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				281477E21B01C52400DDB274 /* Matthew.jpg in Resources */,
 				28F829B81B002168001D6630 /* icon196x196.png in Resources */,
 				28F8295F1B001E5E001D6630 /* Main.storyboard in Resources */,
 				28F829641B001E5E001D6630 /* LaunchScreen.xib in Resources */,
+				281477E31B01C52400DDB274 /* Namit.jpg in Resources */,
 				28F829B51B002168001D6630 /* beachparty.jpeg in Resources */,
 				28F829B61B002168001D6630 /* umesh.jpeg in Resources */,
 				28F829B91B002168001D6630 /* neil.jpeg in Resources */,
 				28F829611B001E5E001D6630 /* Images.xcassets in Resources */,
+				281477E41B01C52400DDB274 /* SuperBowl.png in Resources */,
+				281477DF1B01C52400DDB274 /* Pennye.jpg in Resources */,
 				28F829B71B002168001D6630 /* yashar.jpeg in Resources */,
+				281477E01B01C52400DDB274 /* Gigi.jpeg in Resources */,
+				281477E11B01C52400DDB274 /* airplane.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

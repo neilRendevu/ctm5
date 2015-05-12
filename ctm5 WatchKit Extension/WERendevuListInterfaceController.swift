@@ -21,9 +21,8 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
     @IBAction func refreshButtonPressed() {
         self.reset()
     }
-    var collection: WERendevuCollection = WERendevuCollection(plist: [NSObject: AnyObject]())
+    var collection: WERendevuCollection         = WERendevuCollection(plist: [NSObject: AnyObject]())
     var incomingCollection: WERendevuCollection = WERendevuCollection(plist: [NSObject: AnyObject]())
-//    var incomingItems: [WERendevu] = [WERendevu]()
     override func awakeWithContext(context: AnyObject?) {
         self.controllerIdentifier = "RendevuListController"
         self.rowName = "RendevuRow"
@@ -96,7 +95,6 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
                 WKInterfaceController.openParentApplication(userInfo, reply: { (plist: [NSObject : AnyObject]!, error: NSError!) -> Void in
                     if error == nil {
                         if plist != nil {
-            
                                 var newCollection = WERendevuCollection(plist: plist)
                                 if self.networkStatus != WENetworkStatus.Loaded {
                                     self.incomingCollection = newCollection
@@ -153,9 +151,11 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
 // MARK: - Table Management
 extension WERendevuListInterfaceController {
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        if rowIndex < self.collection.items.count {
-            let rendevu = self.collection.items[rowIndex]
-            pushControllerWithName("RendevuDetailController", context: rendevu)
+        if let items = self.collection.items as? [WERendevu] {
+            if rowIndex < items.count {
+                let rendevu: WERendevu = items[rowIndex]
+                pushControllerWithName("RendevuDetailController", context: rendevu)
+            }
         }
     }
     func sequenceThroughRowTypes(transferredImageName: String) -> Void {
