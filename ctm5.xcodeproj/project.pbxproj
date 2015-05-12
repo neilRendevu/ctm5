@@ -13,6 +13,8 @@
 		281477E21B01C52400DDB274 /* Matthew.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281477DC1B01C52400DDB274 /* Matthew.jpg */; };
 		281477E31B01C52400DDB274 /* Namit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281477DD1B01C52400DDB274 /* Namit.jpg */; };
 		281477E41B01C52400DDB274 /* SuperBowl.png in Resources */ = {isa = PBXBuildFile; fileRef = 281477DE1B01C52400DDB274 /* SuperBowl.png */; };
+		281477E61B01CEB400DDB274 /* WERendevuDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281477E51B01CEB400DDB274 /* WERendevuDetailController.swift */; };
+		281477E81B01D03600DDB274 /* WECommentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281477E71B01D03600DDB274 /* WECommentRow.swift */; };
 		2859D4DD1B00371A0018236A /* AppDelegateExtensionForWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859D4DC1B00371A0018236A /* AppDelegateExtensionForWatch.swift */; };
 		2859D4DF1B0037E30018236A /* WERequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859D4DE1B0037E30018236A /* WERequestType.swift */; };
 		2859D4E01B0038120018236A /* WERequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2859D4DE1B0037E30018236A /* WERequestType.swift */; };
@@ -104,6 +106,8 @@
 		281477DC1B01C52400DDB274 /* Matthew.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Matthew.jpg; sourceTree = "<group>"; };
 		281477DD1B01C52400DDB274 /* Namit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Namit.jpg; sourceTree = "<group>"; };
 		281477DE1B01C52400DDB274 /* SuperBowl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SuperBowl.png; sourceTree = "<group>"; };
+		281477E51B01CEB400DDB274 /* WERendevuDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WERendevuDetailController.swift; sourceTree = "<group>"; };
+		281477E71B01D03600DDB274 /* WECommentRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WECommentRow.swift; sourceTree = "<group>"; };
 		2859D4DC1B00371A0018236A /* AppDelegateExtensionForWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensionForWatch.swift; sourceTree = "<group>"; };
 		2859D4DE1B0037E30018236A /* WERequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WERequestType.swift; sourceTree = "<group>"; };
 		2859D4E11B003E9F0018236A /* SimulatedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatedDataSource.swift; sourceTree = "<group>"; };
@@ -366,6 +370,7 @@
 				28F829861B001E92001D6630 /* GlanceController.swift */,
 				288247111B011BFE00CC70E4 /* WEBaseInterfaceController.swift */,
 				288247131B011C2400CC70E4 /* WERendevuListInterfaceController.swift */,
+				281477E51B01CEB400DDB274 /* WERendevuDetailController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 			children = (
 				288247171B01376E00CC70E4 /* WEBaseRow.swift */,
 				288247191B01377B00CC70E4 /* WERendevuRow.swift */,
+				281477E71B01D03600DDB274 /* WECommentRow.swift */,
 			);
 			name = Rows;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				28F829831B001E92001D6630 /* InterfaceController.swift in Sources */,
 				28F829BE1B002308001D6630 /* WESharedStorageManager.swift in Sources */,
 				28F829C11B0027E5001D6630 /* WEBaseModel.swift in Sources */,
+				281477E61B01CEB400DDB274 /* WERendevuDetailController.swift in Sources */,
 				2859D4EB1B0041950018236A /* WERendevuCollection.swift in Sources */,
 				288247121B011BFE00CC70E4 /* WEBaseInterfaceController.swift in Sources */,
 				2859D4EE1B0043DA0018236A /* WEUser.swift in Sources */,
@@ -630,6 +637,7 @@
 				288247161B011CAF00CC70E4 /* WEManager.swift in Sources */,
 				28F829C41B0027F7001D6630 /* WEDerivedImage.swift in Sources */,
 				288247181B01376E00CC70E4 /* WEBaseRow.swift in Sources */,
+				281477E81B01D03600DDB274 /* WECommentRow.swift in Sources */,
 				2859D4E51B003EC50018236A /* WERendevu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

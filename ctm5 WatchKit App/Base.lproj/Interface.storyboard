@@ -105,12 +105,12 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="347"/>
+            <point key="canvasLocation" x="71" y="173.75"/>
         </scene>
-        <!--Interface Controller-->
+        <!--RendevuDetailController-->
         <scene sceneID="Z6J-ad-wB8">
             <objects>
-                <controller id="gX5-79-kkw">
+                <controller identifier="RendevuDetailController" id="gX5-79-kkw" customClass="WERendevuDetailController" customModule="ctm5_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="left" id="d8g-gM-eOD">
                             <items>
@@ -133,10 +133,16 @@
                                 <button alignment="left" verticalAlignment="center" title="Map" id="Gl9-7X-1Gc">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="backgroundColor" red="0.30421643809999999" green="1" blue="0.33335665689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="mapButtonPressed" destination="gX5-79-kkw" id="oLe-iv-xJO"/>
+                                    </connections>
                                 </button>
                                 <button alignment="left" title="Comment" id="H8h-Ug-gxx">
                                     <color key="titleColor" red="1" green="0.054662370580000001" blue="0.2698217691" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="commentButtonPressed" destination="gX5-79-kkw" id="88P-uN-SnC"/>
+                                    </connections>
                                 </button>
                             </items>
                         </group>
@@ -157,18 +163,58 @@
                         </group>
                         <table alignment="left" id="MSH-Tw-ELf">
                             <items>
-                                <tableRow identifier="CommentRow" id="PWh-dC-Sfz">
-                                    <group key="rootItem" width="1" alignment="left" id="gXa-Sj-zSs"/>
+                                <tableRow identifier="CommentRow" id="PWh-dC-Sfz" customClass="WECommentRow" customModule="ctm5_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="gXa-Sj-zSs">
+                                        <items>
+                                            <group width="1" alignment="left" id="h3V-A7-Mma">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Commenter" id="bSU-ci-Pje">
+                                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                    </label>
+                                                    <label alignment="right" verticalAlignment="center" text="Time" textAlignment="right" id="EwA-fP-bMw">
+                                                        <color key="textColor" red="0.30421643809999999" green="1" blue="0.33335665689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="0.40177214020000002" green="0.65634994030000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <label alignment="left" text="This is a comment. A Long Comment" numberOfLines="0" id="dN4-dB-OEu">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            </label>
+                                            <map height="100" alignment="center" id="5IN-0a-IOR"/>
+                                            <imageView alignment="center" image="icon196x196.png" contentMode="scaleAspectFit" id="rf2-pY-NeT"/>
+                                        </items>
+                                        <color key="backgroundColor" red="0.21702133539999999" green="0.24965625280000001" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="createdAtLabel" destination="EwA-fP-bMw" id="smT-5i-vK8"/>
+                                        <outlet property="itemImage" destination="rf2-pY-NeT" id="mvd-Df-NEw"/>
+                                        <outlet property="itemMap" destination="5IN-0a-IOR" id="0yU-0a-AXs"/>
+                                        <outlet property="originatorNameLabel" destination="bSU-ci-Pje" id="gzM-ja-SQ0"/>
+                                        <outlet property="textLabel" destination="dN4-dB-OEu" id="k86-JM-XZ2"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                         <button width="1" alignment="left" title="Refresh" id="mpY-Wr-U1a">
                             <color key="backgroundColor" red="0.48981888109999999" green="0.19073618919999999" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="refreshButtonPressed" destination="gX5-79-kkw" id="5NY-fb-B1J"/>
+                            </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="collectionTitle" destination="e7U-xa-ZPe" id="6rv-bb-rk8"/>
+                        <outlet property="itemsTable" destination="MSH-Tw-ELf" id="o57-1f-O4U"/>
+                        <outlet property="loginGroup" destination="d8g-gM-eOD" id="1q7-Wb-VMF"/>
+                        <outlet property="mapCommentButtonGropu" destination="Wuh-8x-wyH" id="3Rh-60-GHk"/>
+                        <outlet property="networkLoadingGroup" destination="T8G-oZ-a7O" id="fCk-yj-raA"/>
+                        <outlet property="networkLoadingStatusLabel" destination="eTf-gK-8su" id="f8l-4l-KAE"/>
+                        <outlet property="noItemsGroup" destination="Xkb-hg-UWZ" id="bHg-5p-UyP"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="495" y="347"/>
+            <point key="canvasLocation" x="285" y="188.5"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">

@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Neil Weintraut. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import MapKit
 
 class WEBaseModel: NSObject {
     var className: String = "WEBaseModel"
@@ -119,5 +120,17 @@ class WEBaseModel: NSObject {
             string = "\(string), \(key): \(value) "
         }
         return string
+    }
+    func locationCoordinate() -> CLLocationCoordinate2D? {
+        if self.latitude != 0 && self.longitude != 0  {
+            return CLLocationCoordinate2DMake(latitude, longitude)
+        }
+        return nil
+    }
+    func locationCoorindateRegion() -> MKCoordinateRegion? {
+        if let coordinate = self.locationCoordinate() {
+            return MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
+        }
+        return nil
     }
 }

@@ -15,9 +15,10 @@ class WEBaseRow: NSObject {
     var imageHeight: CGFloat = 60.0
     var imageWidth: CGFloat = 60.0
     @IBOutlet weak var image: WKInterfaceImage!
+    var device = WKInterfaceDevice.currentDevice()
     
     
-    func configure(WEBaseModel) -> WEDerivedImage? {
+    func configure(model: WEBaseModel) -> WEDerivedImage? {
         println("Need to implement .configure() in Row Controller")
         return nil
     }

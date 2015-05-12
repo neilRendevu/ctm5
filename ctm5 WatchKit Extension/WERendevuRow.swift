@@ -16,7 +16,7 @@ class WERendevuRow: WEBaseRow {
     @IBOutlet weak var rowImage: WKInterfaceImage!
     @IBOutlet weak var rowTitle: WKInterfaceLabel!
     @IBOutlet weak var locationLabel: WKInterfaceLabel!
-    var device = WKInterfaceDevice.currentDevice()
+
     
     
     override init() {
@@ -27,8 +27,8 @@ class WERendevuRow: WEBaseRow {
         
     }
     
-    override func configure(rendevu: WEBaseModel) -> WEDerivedImage? {
-        if let rendevu = rendevu as? WERendevu {
+    override func configure(model: WEBaseModel) -> WEDerivedImage? {
+        if let rendevu = model as? WERendevu {
             if let originator: String = rendevu.originatorName { self.originatorNameLabel.setText(originator)}
             if let title: String = rendevu.title {self.rowTitle.setText(title)}
             if let location:String = rendevu.location {self.locationLabel.setText(location)}

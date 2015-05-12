@@ -37,13 +37,13 @@ class SimulatedDataSource: NSObject {
         plist["latitude"] = Double(37.9)
         plist["longitude"] = Double(-121.9)
     
-        plist["items"] = createRendevus3()
+        plist["items"] = createRendevus3(false)
 
         var r = plist["items"] as! [ [NSObject : AnyObject] ]
         // println(r)
         return WERendevuCollection(plist: plist)
     }
-    func createRendevus3() -> [ [NSObject : AnyObject] ]{
+    func createRendevus3(comments: Bool) -> [ [NSObject : AnyObject] ]{
         var seed = [NSObject : AnyObject]()
         seed["objectIdentifier"] = "Rendevu_"
         seed["title"] = "Rendevu_Title_"
@@ -58,17 +58,17 @@ class SimulatedDataSource: NSObject {
         seed["latitude"] = Double(33.0)
         seed["longitude"] = Double(-116.5)
         seed["imageId"] = "yashar.jpeg"
-        return createRendevus2(seed)
+        return createRendevus2(seed, comments: comments)
     }
     
-    func createRendevus2(plist: [NSObject: AnyObject]) -> [ [ NSObject : AnyObject ] ]{
+    func createRendevus2(plist: [NSObject: AnyObject], comments: Bool) -> [ [ NSObject : AnyObject ] ]{
         var rendevus = [ [ NSObject : AnyObject ] ]()
         for var index = 0; index < 20; ++index {
             var item = [NSObject : AnyObject]()
             item = plist
             let pictureIndex = index % images.count
             item["imageId"] = self.images[pictureIndex]
-            item["items"] = createComments2()
+            if comments { item["items"] = createComments2() }
             rendevus.append(item)
         }
         return rendevus
@@ -92,6 +92,8 @@ class SimulatedDataSource: NSObject {
         for var index = 0; index < 20; ++index {
             var item = [NSObject : AnyObject]()
             item = seed
+            let pictureIndex = index % images.count
+            item["imageId"] = self.images[pictureIndex]
             comments.append(item)
         }
         return comments
