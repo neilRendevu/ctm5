@@ -39,6 +39,15 @@ class WEBaseInterfaceController: WKInterfaceController {
         }
     }
     
+    func populateRequestPlist(collection: WEBaseModel, requestType: WERequestType) -> [NSObject : AnyObject] {
+        var userInfo = [NSObject : AnyObject]()
+        userInfo["requestType"] = requestType.rawValue
+        if let objectIdentifier = collection.objectIdentifier { userInfo["objectIdentifier"] = objectIdentifier }
+        userInfo["cursor"] = collection.cursor
+        userInfo["maxCount"] = collection.maxCount
+        return userInfo
+    }
+    
     func fetchImage(imageToFetch: WEDerivedImage, callback: (transferredImageName: String) -> Void ) -> Void {
         var userInfo = imageToFetch.plist
         userInfo["requestType"] = WERequestType.Image.rawValue

@@ -10,8 +10,7 @@ import Foundation
 
 enum WERequestType: String {
     case Rendevus = "rendevus"
-    case Rendevu = "rendevu"
-    case Comments = "comments"
+    case RendevuWithComments = "rendevuWithComments"
     case Users = "users"
     case Image = "image"
     case LoginId = "loginId"

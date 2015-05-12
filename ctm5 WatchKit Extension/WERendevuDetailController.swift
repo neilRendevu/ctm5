@@ -108,6 +108,41 @@ class WERendevuDetailController: WEBaseInterfaceController {
         
     }
     func hardReload() {
-        
+        self.setAsLoading()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            var userInfo: [NSObject : AnyObject] = self.populateRequestPlist(self.collection, requestType: WERequestType.RendevuWithComments)
+            if self.active {
+                WKInterfaceController.openParentApplication(userInfo , reply: { (plist: [NSObject: AnyObject]!, error: NSError!) -> Void in
+                    if self.active {
+                        if error == nil {
+                            if plist != nil {
+                                var newCollection = WERendevu(plist: plist)
+                                if self.networkStatus != WENetworkStatus.Loaded {
+                                    self.incommingCollection = newCollection
+                                    self.setAsLoaded(false)
+                                    if self.active {
+                                        self.populateInterface()
+                                        return
+                                    }
+                                } else {
+                                    return
+                                }
+                            }
+                        } else {
+                            println("Error in openParent response: \(error)")
+                        }
+                    }
+                    if self.networkStatus != WENetworkStatus.Loaded {
+                        self.networkStatus = WENetworkStatus.NotLoaded
+                    }
+                })
+            } else {
+                if self.networkStatus != WENetworkStatus.Loaded
+                {
+                    self.networkStatus = WENetworkStatus.NotLoaded
+                }
+            }
+        })
     }
 }
+

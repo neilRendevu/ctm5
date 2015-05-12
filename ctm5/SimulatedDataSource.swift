@@ -21,6 +21,7 @@ class SimulatedDataSource: NSObject {
         }
         return Singleton.instance
     }
+    var users = ["Yashar", "Neil", "Umesh", "Beachy", "SuperBowl", "Namit", "Matthew", "Airplane", "Gigi", "Pennye"]
     var images = ["yashar.jpeg", "neil.jpeg", "umesh.jpeg", "beachparty.jpeg", "SuperBowl.png", "Namit.jpg", "Matthew.jpg", "airplane.jpeg", "Gigi.jpeg", "Pennye.jpg"]
     func makeRendevuCollection() -> WERendevuCollection {
         var plist = [NSObject : AnyObject]()
@@ -66,6 +67,11 @@ class SimulatedDataSource: NSObject {
         for var index = 0; index < 20; ++index {
             var item = [NSObject : AnyObject]()
             item = plist
+            item["objectIdentifier"] = index
+            let peopleIndex = index % users.count
+            item["originatorName"] = self.users[peopleIndex]
+            item["title"] = ("\(self.users[peopleIndex])'s Big Rendevu")
+            item["originatorId"] = self.users[peopleIndex]
             let pictureIndex = index % images.count
             item["imageId"] = self.images[pictureIndex]
             if comments { item["items"] = createComments2() }

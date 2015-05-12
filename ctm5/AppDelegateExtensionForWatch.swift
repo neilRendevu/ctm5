@@ -17,10 +17,8 @@ extension AppDelegate {
                     switch requestType {
                     case .Rendevus:
                         WERequestHandler.sharedInstance.getRendevus(plist, reply: reply)
-                    case .Rendevu:
+                    case .RendevuWithComments:
                         WERequestHandler.sharedInstance.getRendevu(plist, reply: reply)
-                    case .Comments:
-                        WERequestHandler.sharedInstance.getComments(plist, reply: reply)
                     case .Users:
                         WERequestHandler.sharedInstance.getComment(plist, reply: reply)
                     case .Image:

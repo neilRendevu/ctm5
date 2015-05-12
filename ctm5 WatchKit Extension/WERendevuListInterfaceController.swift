@@ -93,28 +93,35 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
     func hardReload() {
         self.setAsLoading()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            var userInfo = [NSObject : AnyObject]()
-            userInfo["requestType"] = WERequestType.Rendevus.rawValue
+            var userInfo: [NSObject : AnyObject] = self.populateRequestPlist(self.collection, requestType: WERequestType.Rendevus)
             if self.active {
                 WKInterfaceController.openParentApplication(userInfo, reply: { (plist: [NSObject : AnyObject]!, error: NSError!) -> Void in
                     if error == nil {
                         if plist != nil {
-                                var newCollection = WERendevuCollection(plist: plist)
-                                if self.networkStatus != WENetworkStatus.Loaded {
-                                    self.incomingCollection = newCollection
-                                    self.setAsLoaded(false)
-                                    if self.active {
-                                        self.populateInterface()
-                                    }
+                            var newCollection = WERendevuCollection(plist: plist)
+                            if self.networkStatus != WENetworkStatus.Loaded {
+                                self.incomingCollection = newCollection
+                                self.setAsLoaded(false)
+                                if self.active {
+                                    self.populateInterface()
+                                    return
                                 }
-                            
+                            } else {
+                                return
+                            }
                         }
                     } else {
                         println("Error in openParent response: \(error)")
                     }
+                    if self.networkStatus != WENetworkStatus.Loaded {
+                        self.networkStatus = WENetworkStatus.NotLoaded
+                    }
                 })
             } else {
-                self.networkStatus = WENetworkStatus.NotLoaded
+                if self.networkStatus != WENetworkStatus.Loaded
+                {
+                    self.networkStatus = WENetworkStatus.NotLoaded
+                }
             }
         })
     }
