@@ -105,8 +105,39 @@ class WERendevuDetailController: WEBaseInterfaceController {
     }
     
     func populateInterface() {
-        
+        if self.networkStatus == WENetworkStatus.Loaded {
+            var newCollection = self.incommingCollection
+            if self.active {
+                self.resizeTable(self.itemsTable, newSize: newCollection.items.count, rowTypeName: self.rowName!)
+                
+                self.collection = newCollection
+                if let collectionName = newCollection.title {
+                    self.collectionTitle.setText(collectionName)
+                } else {
+                    self.collectionTitle.setText("Oops. No Title")
+                }
+                if newCollection.items.count == 0 {
+                    self.noItemsGroup.setHidden(false)
+                } else {
+                    self.noItemsGroup.setHidden(true)
+                    for (index, item) in enumerate(newCollection.items) {
+                        if self.active {
+                            if let row = itemsTable.rowControllerAtIndex(index) as? WECommentRow {
+                                let imageToFetch: WEDerivedImage? = row.configure(item)
+                                if imageToFetch != nil {
+                                    println("Fetching Image \(imageToFetch)")
+                                    self.fetchImage(imageToFetch!, callback: sequenceThroughRowTypes)
+                                }
+                            } else {
+                                println("No row found")
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+
     func hardReload() {
         self.setAsLoading()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -143,6 +174,22 @@ class WERendevuDetailController: WEBaseInterfaceController {
                 }
             }
         })
+    }
+}
+// MARK: - TABLE MANAGEMENT
+extension WERendevuDetailController {
+    func sequenceThroughRowTypes(transferredImageName: String) -> Void {
+        if self.active {
+            for var index: Int = 0; index < self.itemsTable.numberOfRows; ++index {
+                if let row = self.itemsTable.rowControllerAtIndex(index) as? WECommentRow {
+                    if let derivedImage: WEDerivedImage = row.derivedImage {
+                        if derivedImage.derivedImageName == transferredImageName {
+                            row.itemImage.setImageNamed(transferredImageName)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

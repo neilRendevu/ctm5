@@ -135,6 +135,7 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
             var newCollection = self.incomingCollection
             if self.active {
                 self.resizeTable(self.listTable, newSize: newCollection.items.count, rowTypeName: self.rowName!)
+                self.collection = newCollection
                 if let collectionName = newCollection.title {
                     self.collectionNameLabel.setText(collectionName)
                     self.collectionGroup.setHidden(false)
@@ -159,7 +160,7 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
                         }
                     }
                 }
-                self.collection = newCollection
+
             }
         }
     }
