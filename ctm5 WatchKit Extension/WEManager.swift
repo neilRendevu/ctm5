@@ -81,10 +81,10 @@ extension WEManager {
                         println("Logged in; same as prior user")
                         // in this, can save/use existing info; not implemented yet. Neil
                         return WELoginStatus.sameLogIn
-                    } else {
-                        println("Logged in; not the same as prior user")
-                        return WELoginStatus.newLogIn
                     }
+                } else {
+                    println("Logged in; not the same as prior user")
+                    return WELoginStatus.newLogIn
                 }
             } else {
                 println("Not logged in")

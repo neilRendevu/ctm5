@@ -36,6 +36,7 @@ class SimulatedDataSource: NSObject {
         plist["location"] = "San Francisco"
         plist["latitude"] = Double(37.9)
         plist["longitude"] = Double(-121.9)
+    
         
         
         var seed = [NSObject : AnyObject]()
@@ -51,7 +52,9 @@ class SimulatedDataSource: NSObject {
         seed["location"] = "San Diego"
         seed["latitude"] = Double(33.0)
         seed["longitude"] = Double(-116.5)
+        seed["imageId"] = "yashar.jpeg"
         plist["items"] = createRendevus2(seed)
+
         var r = plist["items"] as! [ [NSObject : AnyObject] ]
         // println(r)
         return WERendevuCollection(plist: plist)

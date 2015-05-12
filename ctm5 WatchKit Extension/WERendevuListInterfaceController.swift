@@ -39,12 +39,9 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
     override func willActivate() {
         super.willActivate()
         self.checkLoginStatus()
-        println("activate")
         if self.networkStatus == WENetworkStatus.Loaded {
-            println("populate")
             populateInterface()
         } else {
-            println("reload")
             self.reload()
         }
     }
@@ -137,10 +134,13 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
                         if self.active {
                             if let row = listTable.rowControllerAtIndex(index) as? WERendevuRow {
                                 let imageToFetch: WEDerivedImage? = row.configure(item)
+                                println("Image: \(imageToFetch?.derivedImageName)")
                                 if imageToFetch != nil {
                                     println("Fetching Image \(imageToFetch)")
                                     self.fetchImage(imageToFetch!, callback: sequenceThroughRowTypes)
                                 }
+                            } else {
+                                println("No image found")
                             }
                         }
                     }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ctm5" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon196x196.png" translatesAutoresizingMaskIntoConstraints="NO" id="ri9-AE-tnR">
+                                <rect key="frame" x="60" y="62" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="dTg-wB-c0O"/>
+                                    <constraint firstAttribute="width" constant="200" id="zqL-9L-rCD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxE-Ry-dFF">
+                                <rect key="frame" x="60" y="309" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kb8-az-FJ7">
+                                <rect key="frame" x="60" y="385" width="200" height="30"/>
+                                <state key="normal" title="Login/Out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logInOutButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FWm-MJ-kJs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ri9-AE-tnR" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="42" id="CQ2-aw-XHd"/>
+                            <constraint firstItem="yxE-Ry-dFF" firstAttribute="top" secondItem="ri9-AE-tnR" secondAttribute="bottom" constant="47" id="IIV-S3-zLQ"/>
+                            <constraint firstItem="kb8-az-FJ7" firstAttribute="trailing" secondItem="yxE-Ry-dFF" secondAttribute="trailing" id="MLc-0z-5ZT"/>
+                            <constraint firstItem="yxE-Ry-dFF" firstAttribute="trailing" secondItem="ri9-AE-tnR" secondAttribute="trailing" id="edd-Y4-hP4"/>
+                            <constraint firstItem="yxE-Ry-dFF" firstAttribute="leading" secondItem="ri9-AE-tnR" secondAttribute="leading" id="hdV-uA-RWB"/>
+                            <constraint firstItem="kb8-az-FJ7" firstAttribute="leading" secondItem="yxE-Ry-dFF" secondAttribute="leading" id="ofA-fw-Zj6"/>
+                            <constraint firstAttribute="centerX" secondItem="ri9-AE-tnR" secondAttribute="centerX" id="qzN-S5-LeK"/>
+                            <constraint firstItem="kb8-az-FJ7" firstAttribute="top" secondItem="yxE-Ry-dFF" secondAttribute="bottom" constant="55" id="r7e-GK-tCS"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="loginButtonLabel" destination="kb8-az-FJ7" id="ZlF-dd-vmK"/>
+                        <outlet property="loginStatusLabel" destination="yxE-Ry-dFF" id="GbT-NO-bwL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon196x196.png" width="196" height="196"/>
+    </resources>
+</document>

@@ -31,6 +31,7 @@ class WERendevuRow: WEBaseRow {
             if let originator: String = rendevu.originatorName { self.originatorNameLabel.setText(originator)}
             if let title: String = rendevu.title {self.rowTitle.setText(title)}
             if let location:String = rendevu.location {self.locationLabel.setText(location)}
+            println(rendevu.toString())
             if let imageId: String = rendevu.imageId {
                 self.derivedImage = WEDerivedImage(imageId: imageId, width: self.imageWidth, height: self.imageHeight)
                 if let size = device.cachedImages[self.derivedImage!.derivedImageName] as? Int {

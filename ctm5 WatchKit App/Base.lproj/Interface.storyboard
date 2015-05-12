@@ -93,6 +93,69 @@
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
         </scene>
+        <!--Interface Controller-->
+        <scene sceneID="Z6J-ad-wB8">
+            <objects>
+                <controller id="gX5-79-kkw">
+                    <items>
+                        <group width="1" alignment="left" id="d8g-gM-eOD">
+                            <items>
+                                <label alignment="center" text="Oops. Log-in on your iPhone" textAlignment="center" numberOfLines="2" id="j1z-fK-7Y2">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="1" green="0.054662370580000001" blue="0.2698217691" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" alignment="center" id="SPf-NN-YDF">
+                            <items>
+                                <label alignment="center" text="Rendevu TItle" textAlignment="center" id="e7U-xa-ZPe">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="1" green="0.054662370580000001" blue="0.2698217691" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group alignment="center" id="Wuh-8x-wyH">
+                            <items>
+                                <button alignment="left" verticalAlignment="center" title="Map" id="Gl9-7X-1Gc">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.30421643809999999" green="1" blue="0.33335665689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                                <button alignment="left" title="Comment" id="H8h-Ug-gxx">
+                                    <color key="titleColor" red="1" green="0.054662370580000001" blue="0.2698217691" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="T8G-oZ-a7O">
+                            <items>
+                                <label alignment="center" text="Loading" textAlignment="center" id="eTf-gK-8su">
+                                    <color key="textColor" red="1" green="0.054662370580000001" blue="0.2698217691" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.30421643809999999" green="1" blue="0.33335665689999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" alignment="left" id="Xkb-hg-UWZ">
+                            <items>
+                                <label alignment="left" text="No Comments Yet!" id="Mia-Lw-JUi"/>
+                            </items>
+                            <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <table alignment="left" id="MSH-Tw-ELf">
+                            <items>
+                                <tableRow identifier="CommentRow" id="PWh-dC-Sfz">
+                                    <group key="rootItem" width="1" alignment="left" id="gXa-Sj-zSs"/>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <button width="1" alignment="left" title="Refresh" id="mpY-Wr-U1a">
+                            <color key="backgroundColor" red="0.48981888109999999" green="0.19073618919999999" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="495" y="347"/>
+        </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
@@ -128,6 +191,12 @@
                 <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="ctm5_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="duS-Xq-HIW">
+            <objects>
+                <controller id="7l6-Xl-81F"/>
+            </objects>
         </scene>
     </scenes>
 </document>
