@@ -11,7 +11,7 @@ import UIKit
 class SimulatedDataSource2: NSObject {
     var collections = [String: WERendevuCollection]()
     var users = ["Yashar", "Neil", "Umesh", "Beachy", "SuperBowl", "Namit", "Matthew", "Airplane", "Gigi", "Pennye"]
-    var images = ["yashar.jpeg", "neil.jpeg", "umesh.jpeg", "beachparty.jpeg", "SuperBowl.png", "Namit.jpg", "Matthew.jpg", "airplane.jpeg", "Gigi.jpeg", "Pennye.jpg"]
+    var images = ["yashar.jpeg", "neil.jpeg", "umesh.jpeg", "beachparty.jpeg", "SuperBowl.png", "Namit.jpg", "Matthew.jpg", "airplane.jpeg", "Gigi.jpeg", "Pennye.jpeg"]
     class var sharedInstance: SimulatedDataSource2 {
         struct Singleton {
             static let instance = SimulatedDataSource2()

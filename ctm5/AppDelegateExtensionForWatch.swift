@@ -38,7 +38,7 @@ extension AppDelegate {
 
 
 class WERequestHandler {
-    var collection = SimulatedDataSource.sharedInstance
+    var collection: WatchAPIProtocol = SimulatedDataSource2.sharedInstance
     var storageManager = WESharedStorageManager.sharedInstance
     class var sharedInstance: WERequestHandler {
         struct Singleton {
@@ -47,10 +47,11 @@ class WERequestHandler {
         return Singleton.instance
     }
     init() {
-        self.collection.makeRendevuCollection()
+        // self.collection.makeRendevuCollection()
     }
     func getRendevus(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
-        reply (self.collection.rendevuCollection!.plist )
+        reply(self.collection.retrieveRendevus(plist))
+        // reply (self.collection.rendevuCollection!.plist )
     }
     func getRendevuWithComments(requestPlist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
         var plistResponse = [NSObject: AnyObject]()
@@ -103,7 +104,8 @@ class WERequestHandler {
 
     
     func retrieveImage(imageId: String) -> UIImage? {
-        return UIImage(named: imageId)
+        return self.collection.retrieveImage(imageId)
+//        return UIImage(named: imageId)
     }
     func transferSizedImage(image: UIImage, derivedImage: WEDerivedImage) -> String? {
         

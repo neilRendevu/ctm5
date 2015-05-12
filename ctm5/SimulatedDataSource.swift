@@ -8,16 +8,16 @@
 
 import Foundation
 
-class SimulatedDataSource: NSObject {
+class SimulatedDataSourceOld: NSObject {
     var rendevus: [WERendevu] = [WERendevu]()
     var rendevuCollection: WERendevuCollection? = nil
     override init() {
         super.init()
         //makeEm()
     }
-    class var sharedInstance: SimulatedDataSource {
+    class var sharedInstance: SimulatedDataSourceOld {
         struct Singleton {
-            static let instance = SimulatedDataSource()
+            static let instance = SimulatedDataSourceOld()
         }
         return Singleton.instance
     }
@@ -126,7 +126,7 @@ class SimulatedDataSource: NSObject {
     }
     
     
-    func makeEm() -> SimulatedDataSource {
+    func makeEm() -> SimulatedDataSourceOld {
         var dictionary = [NSObject : AnyObject]()
         dictionary["title"] = "Party"
         dictionary["serverObjectId"] = "0"
