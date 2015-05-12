@@ -42,6 +42,7 @@ class WECommentRow: WEBaseRow {
                 if let size = device.cachedImages[self.derivedImage!.derivedImageName] as? Int {
                     if size > 0 {
                         self.itemImage.setImageNamed(self.derivedImage!.derivedImageName)
+                        self.itemImage.setHidden(false)
                         return nil
                     }
                 }

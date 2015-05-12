@@ -38,7 +38,8 @@ class SimulatedDataSource: NSObject {
         plist["latitude"] = Double(37.9)
         plist["longitude"] = Double(-121.9)
     
-        plist["items"] = createRendevus3(false)
+    //    plist["items"] = createRendevus3(false)
+        plist["items"] = createRendevus3(true)
 
         var r = plist["items"] as! [ [NSObject : AnyObject] ]
         // println(r)
@@ -80,12 +81,12 @@ class SimulatedDataSource: NSObject {
         return rendevus
     }
     
+    
     func createComments2() -> [ [NSObject: AnyObject]] {
         var seed = [NSObject : AnyObject]()
         seed["objectIdentifier"] = "Comment_"
         seed["title"] = "Comment_Title_"
-        seed["originatorId"] = "yasharsID"
-        seed["originatorName"] = "Yashar"
+
         seed["text"] = "Comment text"
         seed["cursor"] = Int(0)
         seed["maxCount"] = Int(20)
@@ -100,6 +101,25 @@ class SimulatedDataSource: NSObject {
             item = seed
             let pictureIndex = index % images.count
             item["imageId"] = self.images[pictureIndex]
+
+            let peopleIndex = index % users.count
+            item["originatorName"] = self.users[peopleIndex]
+            item["originatorId"] = self.users[peopleIndex]
+            item["text"] = ("\(self.users[peopleIndex])'s very funny comment")
+            var latitude = seed["latitude"] as! Double
+            item["latitude"] = latitude - 0.1 * Double(index)
+            var longitude = seed["longitude"] as! Double
+            item["longitude"] = longitude - 0.1 * Double(index)
+            if (index == 0) || (index % 4 != 0) {
+                item["latitude"] = 0
+                item["longitude"] = 0
+            }
+            if index % 5 != 0 {
+                item.removeValueForKey("imageId")
+            }
+            
+            
+            
             comments.append(item)
         }
         return comments
@@ -116,6 +136,7 @@ class SimulatedDataSource: NSObject {
         dictionary["imageId"] = "someId"
         dictionary["originatorId"] = "someId"
         dictionary["originatorName"] = "Yashar"
+        
         dictionary["privacyType"] = WERendevuPrivacyType.Public.rawValue
         createRendevus(dictionary)
         return self
@@ -170,7 +191,7 @@ class SimulatedDataSource: NSObject {
         seed["commenterId"] = " \(index) A1"
         seed["createdAt"] = NSDate()
         seed["commentType"] = WECommentType.text.rawValue
-        seed["imageId"] = "\(index)_imageId"
+        seed["imageId"] = "yashar.jpeg"
         seed["location"] = "\(index) San Diego"
         seed["latitude"] = Double(33.0)
         seed["longitude"] = Double(-116.5)

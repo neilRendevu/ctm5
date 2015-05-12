@@ -32,6 +32,7 @@
 		288247161B011CAF00CC70E4 /* WEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288247151B011CAF00CC70E4 /* WEManager.swift */; };
 		288247181B01376E00CC70E4 /* WEBaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288247171B01376E00CC70E4 /* WEBaseRow.swift */; };
 		2882471A1B01377B00CC70E4 /* WERendevuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288247191B01377B00CC70E4 /* WERendevuRow.swift */; };
+		28D3A0B91B0284B20008827B /* WatchAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3A0B81B0284B20008827B /* WatchAPIProtocol.swift */; };
 		28F829571B001E5E001D6630 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F829561B001E5E001D6630 /* AppDelegate.swift */; };
 		28F8295A1B001E5E001D6630 /* ctm5.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28F829581B001E5E001D6630 /* ctm5.xcdatamodeld */; };
 		28F8295C1B001E5E001D6630 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F8295B1B001E5E001D6630 /* ViewController.swift */; };
@@ -120,6 +121,7 @@
 		288247151B011CAF00CC70E4 /* WEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WEManager.swift; sourceTree = "<group>"; };
 		288247171B01376E00CC70E4 /* WEBaseRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WEBaseRow.swift; sourceTree = "<group>"; };
 		288247191B01377B00CC70E4 /* WERendevuRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WERendevuRow.swift; sourceTree = "<group>"; };
+		28D3A0B81B0284B20008827B /* WatchAPIProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchAPIProtocol.swift; sourceTree = "<group>"; };
 		28F829511B001E5E001D6630 /* ctm5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ctm5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F829551B001E5E001D6630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28F829561B001E5E001D6630 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				28F829A51B001F00001D6630 /* SimulationAndTesting */,
 				28F829BA1B0022CE001D6630 /* IOSAppWatchManager.swift */,
 				2859D4DC1B00371A0018236A /* AppDelegateExtensionForWatch.swift */,
+				28D3A0B81B0284B20008827B /* WatchAPIProtocol.swift */,
 			);
 			name = Watch;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				28F8295C1B001E5E001D6630 /* ViewController.swift in Sources */,
 				28F829BB1B0022CE001D6630 /* IOSAppWatchManager.swift in Sources */,
 				28F829BD1B002308001D6630 /* WESharedStorageManager.swift in Sources */,
+				28D3A0B91B0284B20008827B /* WatchAPIProtocol.swift in Sources */,
 				2859D4E01B0038120018236A /* WERequestType.swift in Sources */,
 				2859D4DD1B00371A0018236A /* AppDelegateExtensionForWatch.swift in Sources */,
 				28F8295A1B001E5E001D6630 /* ctm5.xcdatamodeld in Sources */,

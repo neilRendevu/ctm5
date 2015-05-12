@@ -41,6 +41,7 @@ class WERendevuRow: WEBaseRow {
                 if let size = device.cachedImages[self.derivedImage!.derivedImageName] as? Int {
                     if size > 0 {
                         self.rowImage.setImageNamed(self.derivedImage!.derivedImageName)
+                        self.rowImage.setHidden(false)
                         return nil
                     }
                 }

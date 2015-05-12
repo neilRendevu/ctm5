@@ -18,7 +18,7 @@ extension AppDelegate {
                     case .Rendevus:
                         WERequestHandler.sharedInstance.getRendevus(plist, reply: reply)
                     case .RendevuWithComments:
-                        WERequestHandler.sharedInstance.getRendevu(plist, reply: reply)
+                        WERequestHandler.sharedInstance.getRendevuWithComments(plist, reply: reply)
                     case .Users:
                         WERequestHandler.sharedInstance.getComment(plist, reply: reply)
                     case .Image:
@@ -52,7 +52,11 @@ class WERequestHandler {
     func getRendevus(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
         reply (self.collection.rendevuCollection!.plist )
     }
-    func getRendevu(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
+    func getRendevuWithComments(requestPlist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
+        var plistResponse = [NSObject: AnyObject]()
+        if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
+            
+        }
         println("Need to implement getRendevu()")
     }
     func getComments(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
