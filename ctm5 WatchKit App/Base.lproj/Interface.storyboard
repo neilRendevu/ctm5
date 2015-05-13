@@ -35,6 +35,21 @@
                                     </items>
                                     <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </group>
+                                <separator alignment="left" id="ay8-8e-jlv"/>
+                                <group width="1" alignment="left" id="dUt-MP-Pqk">
+                                    <items>
+                                        <button alignment="left" id="0Db-lA-8Ol">
+                                            <group key="contentGroup" width="1" alignment="left" spacing="2" id="PHJ-ge-EU5">
+                                                <items>
+                                                    <imageView width="50" height="50" alignment="center" image="icon196x196" id="blM-Ff-Tq1"/>
+                                                </items>
+                                            </group>
+                                            <connections>
+                                                <action selector="createRendevuButtonPressed" destination="AgC-eL-Hgc" id="CQH-14-cvV"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
                                 <group width="1" alignment="left" id="kDQ-w3-6ut">
                                     <items>
                                         <label width="1" alignment="left" text="CollectionName" id="uRp-UY-Jr1">

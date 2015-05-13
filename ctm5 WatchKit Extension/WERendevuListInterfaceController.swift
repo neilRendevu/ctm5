@@ -19,6 +19,20 @@ class WERendevuListInterfaceController: WEBaseInterfaceController {
     @IBOutlet weak var noRendevusGroup: WKInterfaceGroup!
     @IBOutlet weak var collectionGroup: WKInterfaceGroup!
     @IBOutlet weak var collectionNameLabel: WKInterfaceLabel!
+    @IBAction func createRendevuButtonPressed() {
+        if self.networkStatus == WENetworkStatus.Loaded {
+            if let originatorId = manager.loggedInUserServerId {
+                if let originatorName = manager.loggedInUserName {
+                    let collection = WERendevuCollection(plist: self.collection.plist)
+                    collection.items = [WERendevu]()
+                    var plist = [NSObject : AnyObject]()
+                    plist["originatorId"] = originatorId
+                    plist["originatorName"] = originatorName
+                    plist["privacyType"] = WERendevuPrivacyType.Private.rawValue
+                }
+            }
+        }
+    }
     
     @IBAction func refreshButtonPressed() {
         self.reset()

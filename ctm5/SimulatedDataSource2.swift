@@ -20,7 +20,7 @@ class SimulatedDataSource2: NSObject {
     }
     override init() {
         super.init()
-        var collectionIdentifier = "Public Rendevus"
+        var collectionIdentifier = "My Rendevus"
         self.collections[collectionIdentifier] = self.makeCollection(collectionIdentifier)
     }
     
@@ -58,6 +58,7 @@ class SimulatedDataSource2: NSObject {
             item["title"] = ("\(self.users[peopleIndex])'s Big Rendevu")
             item["text"] = ("\(self.users[peopleIndex])'s text")
             item["originatorId"] = self.users[peopleIndex]
+            item["privacyType"] = WERendevuPrivacyType.Private.rawValue
             let pictureIndex = index % images.count
             item["imageId"] = self.images[pictureIndex]
             var count = item["maxCount"] as! Int
@@ -127,7 +128,7 @@ class SimulatedDataSource2: NSObject {
 }
 extension SimulatedDataSource2: WatchAPIProtocol {
     func retrieveRendevus(requestPlist: [NSObject : AnyObject]) -> [NSObject : AnyObject] {
-        if let rendevuCollection = self.collections["Public Rendevus"] {
+        if let rendevuCollection = self.collections["My Rendevus"] {
             var response = rendevuCollection.plist
             if var rendevus = response["items"] as? [[NSObject : AnyObject] ]{
                 for rendevu in rendevus {
@@ -143,7 +144,7 @@ extension SimulatedDataSource2: WatchAPIProtocol {
         return [NSObject: AnyObject]()
     }
     func retrieveRendevuAndComments(requestPlist: [NSObject : AnyObject]) -> [NSObject : AnyObject] {
-        if let rendevuCollection = self.collections["Public Rendevus"] {
+        if let rendevuCollection = self.collections["My Rendevus"] {
             if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
                 let items = rendevuCollection.items
                 for item in items {
@@ -177,7 +178,7 @@ extension SimulatedDataSource2: WatchAPIProtocol {
                     if let longitude = locationInfo["longitude"] as? Double { comment.longitude = longitude }
                 }
             
-                if let rendevuCollection = self.collections["Public Rendevus"] {
+                if let rendevuCollection = self.collections["My Rendevus"] {
                     if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
                         let items = rendevuCollection.items
                         for item in items {

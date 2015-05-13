@@ -104,7 +104,6 @@ class WERendevuDetailController: WEBaseInterfaceController {
     }
 
     override func awakeWithContext(context: AnyObject?) {
-        println("In awake")
         super.awakeWithContext(context)
         self.controllerIdentifier = "RendevuDetailController"
         self.rowName = "CommentRow"
@@ -120,7 +119,6 @@ class WERendevuDetailController: WEBaseInterfaceController {
         
     }
     override func willActivate() {
-        println("In will activate")
         super.willActivate()
         self.checkLoginStatus()
         if self.networkStatus == WENetworkStatus.Loaded {
