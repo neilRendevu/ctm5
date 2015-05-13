@@ -162,10 +162,16 @@ extension SimulatedDataSource2: WatchAPIProtocol {
                 commentPlist["maxCount"] = Int(1)
                 commentPlist["createdAt"] = NSDate()
                 commentPlist["lastUpdated"] = NSDate()
-                commentPlist["originatorName"] = "System"
+                //commentPlist["originatorName"] =
                 commentPlist["objectIdentifier"] =  String(stringInterpolationSegment: NSDate.timeIntervalSinceReferenceDate())
                 var comment = WEComment(plist: commentPlist)
-                
+                if comment.commentType == WECommentType.map {
+                    var locationInfo: [String : AnyObject] = getLocation()
+                    if let location = locationInfo["location"] as? String { comment.location = location}
+                    if let latitude = locationInfo["latitude"] as? Double { comment.latitude = latitude }
+                    if let longitude = locationInfo["longitude"] as? Double { comment.longitude = longitude }
+                }
+            
                 if let rendevuCollection = self.collections["Public Rendevus"] {
                     if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
                         let items = rendevuCollection.items
@@ -178,5 +184,12 @@ extension SimulatedDataSource2: WatchAPIProtocol {
                 }
             }
         }
+    }
+    func getLocation() -> [String : AnyObject] {
+        var location = [String : AnyObject]()
+        location["location"] = "Cleveland"
+        location["latitude"] = Double (37.0)
+        location["longitude"] = Double (-101.0)
+        return location
     }
 }

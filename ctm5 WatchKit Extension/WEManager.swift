@@ -13,6 +13,7 @@ class WEManager: NSObject {
     let storageManager = WESharedStorageManager.sharedInstance
     let device = WKInterfaceDevice.currentDevice()
     var loggedInUserServerId: String? = nil
+    var loggedInUserName: String? = nil
     var priorLoggedInUserKey: String = "PriofLoggedInUserKey"
     var resetCacheKey: String = "ResetCache"
   
@@ -75,6 +76,9 @@ extension WEManager {
         if let sharedDefaults = NSUserDefaults(suiteName: self.storageManager.appGroup) {
             if let loggedInUserServerId = sharedDefaults.objectForKey(storageManager.sharedDefaultsLoggedInUserKey) as? String {
                 self.loggedInUserServerId = loggedInUserServerId
+                if let loggedInUserName = sharedDefaults.objectForKey(storageManager.sharedDefaultsLoggedInUserName) as? String {
+                    self.loggedInUserName = loggedInUserName
+                }
                 if let priorLoggedInUser = sharedDefaults.objectForKey(self.priorLoggedInUserKey) as? String {
                     self.priorLoggedInUserKey = priorLoggedInUser
                     if priorLoggedInUser == loggedInUserServerId {

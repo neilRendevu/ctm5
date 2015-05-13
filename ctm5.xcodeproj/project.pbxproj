@@ -34,6 +34,7 @@
 		2882471A1B01377B00CC70E4 /* WERendevuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288247191B01377B00CC70E4 /* WERendevuRow.swift */; };
 		28D3A0B91B0284B20008827B /* WatchAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3A0B81B0284B20008827B /* WatchAPIProtocol.swift */; };
 		28D3A0BB1B02862D0008827B /* SimulatedDataSource2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3A0BA1B02862D0008827B /* SimulatedDataSource2.swift */; };
+		28DDF9641B0320D9009319C4 /* WEPrivateMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DDF9631B0320D9009319C4 /* WEPrivateMessageController.swift */; };
 		28F829571B001E5E001D6630 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F829561B001E5E001D6630 /* AppDelegate.swift */; };
 		28F8295A1B001E5E001D6630 /* ctm5.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28F829581B001E5E001D6630 /* ctm5.xcdatamodeld */; };
 		28F8295C1B001E5E001D6630 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F8295B1B001E5E001D6630 /* ViewController.swift */; };
@@ -124,6 +125,7 @@
 		288247191B01377B00CC70E4 /* WERendevuRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WERendevuRow.swift; sourceTree = "<group>"; };
 		28D3A0B81B0284B20008827B /* WatchAPIProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchAPIProtocol.swift; sourceTree = "<group>"; };
 		28D3A0BA1B02862D0008827B /* SimulatedDataSource2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatedDataSource2.swift; sourceTree = "<group>"; };
+		28DDF9631B0320D9009319C4 /* WEPrivateMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WEPrivateMessageController.swift; sourceTree = "<group>"; };
 		28F829511B001E5E001D6630 /* ctm5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ctm5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F829551B001E5E001D6630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28F829561B001E5E001D6630 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				288247111B011BFE00CC70E4 /* WEBaseInterfaceController.swift */,
 				288247131B011C2400CC70E4 /* WERendevuListInterfaceController.swift */,
 				281477E51B01CEB400DDB274 /* WERendevuDetailController.swift */,
+				28DDF9631B0320D9009319C4 /* WEPrivateMessageController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28F829851B001E92001D6630 /* NotificationController.swift in Sources */,
+				28DDF9641B0320D9009319C4 /* WEPrivateMessageController.swift in Sources */,
 				2859D4DF1B0037E30018236A /* WERequestType.swift in Sources */,
 				2882471A1B01377B00CC70E4 /* WERendevuRow.swift in Sources */,
 				28F829831B001E92001D6630 /* InterfaceController.swift in Sources */,

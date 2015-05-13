@@ -15,6 +15,8 @@ class WEBaseModel: NSObject {
     var objectIdentifier: String? = nil
     var originatorId: String? = nil
     var originatorName: String? = nil
+    var targetId: String? = nil
+    var targetName: String? = nil
     var text: String? = nil
     var title: String? = nil
     var imageId: String? = nil
@@ -32,7 +34,7 @@ class WEBaseModel: NSObject {
     let dateFormatter = NSDateFormatter()
     var dateFormat: String = "HH:mm"
     
-    var strings = ["objectIdentifier", "title", "originatorId", "originatorName", "text", "imageId", "location"]
+    var strings = ["objectIdentifier", "title", "originatorId", "originatorName", "targetId", "targetName", "text", "imageId", "location"]
     var dates = ["createdAt", "lastUpdated"]
     var doubles = ["latitude", "longitude"]
     var integers = ["cursor", "maxCount"]

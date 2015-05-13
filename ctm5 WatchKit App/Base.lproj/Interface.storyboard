@@ -262,11 +262,38 @@
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>
-        <!--Interface Controller-->
+        <!--PrivateMessageController-->
         <scene sceneID="duS-Xq-HIW">
             <objects>
-                <controller id="7l6-Xl-81F"/>
+                <controller identifier="PrivateMessageController" id="7l6-Xl-81F" customClass="WEPrivateMessageController" customModule="ctm5_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="DQo-de-UmI">
+                            <items>
+                                <label alignment="center" text="Private Message" id="xML-Ls-2Ow">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="tgF-zN-NXD">
+                            <items>
+                                <label alignment="center" text="Label" textAlignment="center" id="dTH-xE-KxO">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.40177214020000002" green="0.65634994030000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <button width="1" alignment="left" title="Message" id="bJE-yc-9F0">
+                            <connections>
+                                <action selector="messageButtonPressed" destination="7l6-Xl-81F" id="mUv-J2-SiU"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="targetNameLabel" destination="dTH-xE-KxO" id="jdz-eK-2XH"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="519" y="223"/>
         </scene>
     </scenes>
 </document>

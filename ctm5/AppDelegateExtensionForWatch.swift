@@ -20,7 +20,7 @@ extension AppDelegate {
                     case .RendevuWithComments:
                         WERequestHandler.sharedInstance.getRendevuWithComments(plist, reply: reply)
                     case .Users:
-                        WERequestHandler.sharedInstance.getComment(plist, reply: reply)
+                        WERequestHandler.sharedInstance.getUsers(plist, reply: reply)
                     case .Image:
                         WERequestHandler.sharedInstance.getImage(plist, reply: reply)
                     case .LoginId:
@@ -49,6 +49,8 @@ class WERequestHandler {
     init() {
         // self.collection.makeRendevuCollection()
     }
+    
+
     func getRendevus(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
         reply(self.collection.retrieveRendevus(plist))
         // reply (self.collection.rendevuCollection!.plist )
@@ -59,12 +61,6 @@ class WERequestHandler {
         } else {
             reply([NSObject: AnyObject]())
         }
-    }
-    func getComments(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
-        println("Need to implement getComments()")
-    }
-    func getComment(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
-        println("Need to implement getComment()")
     }
     func getUsers(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
         println("Need to implement getUsers()")

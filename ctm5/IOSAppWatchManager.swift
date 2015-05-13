@@ -20,12 +20,16 @@ class IOSAppWatchManager: NSObject {
     }
 
     
-    func logInOutUser(userServerObjectId: String?) -> Void {
+    func logInOutUser(userServerObjectId: String?, loggedInUserName: String?) -> Void {
         if let sharedDefaults = NSUserDefaults(suiteName: self.sharedStorageManager.appGroup) {
             if userServerObjectId != nil {
                 sharedDefaults.setObject(userServerObjectId!, forKey: self.sharedStorageManager.sharedDefaultsLoggedInUserKey)
+                if loggedInUserName != nil {
+                    sharedDefaults.setObject(loggedInUserName!, forKey: self.sharedStorageManager.sharedDefaultsLoggedInUserName)
+                }
             } else {
                 sharedDefaults.removeObjectForKey(self.sharedStorageManager.sharedDefaultsLoggedInUserKey)
+                sharedDefaults.removeObjectForKey(self.sharedStorageManager.sharedDefaultsLoggedInUserName)
             }
             sharedDefaults.synchronize()
         } else {

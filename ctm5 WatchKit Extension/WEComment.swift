@@ -57,6 +57,7 @@ class WEComment: WEBaseModel {
 
 enum WECommentType: String {
     case text =     "text"
+    case privateComment =  "privateComment"
     case map =      "map"
     case image =    "image"
 }

@@ -9,6 +9,13 @@
 import Foundation
 import WatchKit
 
+class WEPrivateComment {
+    var sourceComment: WEComment? = nil
+    var targetId: String? = nil
+    var targetName: String? = nil
+    var text: String? = nil
+    var havePrivateMessage: Bool = false
+}
 class WERendevuDetailController: WEBaseInterfaceController {
 
     @IBOutlet weak var loginGroup: WKInterfaceGroup!
@@ -25,6 +32,7 @@ class WERendevuDetailController: WEBaseInterfaceController {
         self.showCommentAddedGroup = false
     }
     var showCommentAddedGroup: Bool = false
+    var privateComment: WEPrivateComment? = nil
     
     var collection: WERendevu = WERendevu(plist: [NSObject : AnyObject]())
     var incommingCollection: WERendevu = WERendevu(plist: [NSObject : AnyObject]())
@@ -33,27 +41,62 @@ class WERendevuDetailController: WEBaseInterfaceController {
             return self.populateRequestPlist(self.collection, requestType: WERequestType.RendevuWithComments)
         }
     }
-    func addACommentRequestPlist(commentText: String) -> [NSObject : AnyObject] {
+    func addACommentRequestPlist(commentText: String?, commentType: WECommentType) -> [NSObject : AnyObject] {
         var rendevu: WERendevu = self.collection
         var rendevuPlist = rendevu.plist
         rendevuPlist["requestType"] = WERequestType.CreateComment.rawValue
         var commentPlist = [NSObject : AnyObject]()
-        commentPlist["text"] = commentText
+        if let text = commentText { commentPlist["text"] = text }
         commentPlist["originatorId"] = manager.loggedInUserServerId
+        if let username = manager.loggedInUserName {
+            commentPlist["originatorName"] = username
+        }
+        commentPlist["commentType"] = commentType.rawValue
         var newItems = [ [NSObject : AnyObject] ]()
         newItems.append( commentPlist )
         rendevuPlist["items"] = newItems
         return rendevuPlist
     }
+    func sendPrivateComment() {
+        if let privateComment = self.privateComment {
+            self.privateComment = nil
+            var rendevu: WERendevu = self.collection
+            var rendevuPlist = rendevu.plist
+            rendevuPlist["requestType"] = WERequestType.CreateComment.rawValue
+            var commentPlist = [NSObject : AnyObject]()
+            if let text = privateComment.text {commentPlist["text"] = text}
+            if let targetId = privateComment.targetId { commentPlist["targetId"] = targetId }
+            if let targetName = privateComment.targetName { commentPlist["targetName"] = targetName}
+            commentPlist["originatorId"] = manager.loggedInUserServerId
+
+            if let username = manager.loggedInUserName { commentPlist["originatorName"] = username}
+            commentPlist["commentType"] = WECommentType.privateComment.rawValue
+            var newItems = [ [NSObject : AnyObject] ]()
+            newItems.append( commentPlist )
+            rendevuPlist["items"] = newItems
+            println("What's up")
+            self.showCommentAddedGroup = true
+            reload(rendevuPlist)
+        }
+    }
     
     @IBAction func mapButtonPressed() {
+        var rendevuPlist: [NSObject : AnyObject] = self.addACommentRequestPlist(nil, commentType: WECommentType.map)
+        self.showCommentAddedGroup = true
+        reload(rendevuPlist)
     }
     
     @IBAction func commentButtonPressed() {
-        var text: String = "Some comment text"
-        var rendevuPlist: [NSObject : AnyObject] = self.addACommentRequestPlist(text)
-        self.showCommentAddedGroup = true
-        reload(rendevuPlist)
+        let suggestions = ["Hi!", "Funny"]
+        self.presentTextInputControllerWithSuggestions(suggestions , allowedInputMode: WKTextInputMode.AllowEmoji) { (response: [AnyObject]!) -> Void in
+            if response != nil && response.count > 0 {
+                if let text = response[0] as? String {
+                    var rendevuPlist: [NSObject : AnyObject] = self.addACommentRequestPlist(text, commentType: WECommentType.text)
+                    self.showCommentAddedGroup = true
+                    self.reload(rendevuPlist)
+                }
+            }
+        }
     }
     
     @IBAction func refreshButtonPressed() {
@@ -61,10 +104,12 @@ class WERendevuDetailController: WEBaseInterfaceController {
     }
 
     override func awakeWithContext(context: AnyObject?) {
+        println("In awake")
         super.awakeWithContext(context)
         self.controllerIdentifier = "RendevuDetailController"
         self.rowName = "CommentRow"
         self.commentAddedGroup.setHidden(true)
+        self.privateComment = nil
         if let rendevu = context as? WERendevu {
             self.collection = rendevu
             self.incommingCollection = rendevu
@@ -75,14 +120,22 @@ class WERendevuDetailController: WEBaseInterfaceController {
         
     }
     override func willActivate() {
+        println("In will activate")
         super.willActivate()
         self.checkLoginStatus()
         if self.networkStatus == WENetworkStatus.Loaded {
             populateInterface()
+            if let privateComment = self.privateComment {
+                self.sendPrivateComment()
+            }
         } else {
+            self.privateComment = nil
             self.reload(self.collectionRequestPlist)
         }
-        
+    }
+    override func didDeactivate() {
+        super.didDeactivate()
+        // self.privateComment = nil
     }
     func setAsLoaded(awake: Bool) {
         self.networkStatus = WENetworkStatus.Loaded
@@ -221,6 +274,16 @@ class WERendevuDetailController: WEBaseInterfaceController {
 }
 // MARK: - TABLE MANAGEMENT
 extension WERendevuDetailController {
+    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        if let items = self.collection.items as? [WEComment] {
+            if rowIndex < items.count {
+                let comment: WEComment = items[rowIndex]
+                self.privateComment = WEPrivateComment()
+                self.privateComment?.sourceComment = comment
+                presentControllerWithName("PrivateMessageController", context: self.privateComment!)
+            }
+        }
+    }
     func sequenceThroughRowTypes(transferredImageName: String) -> Void {
         if self.active {
             for var index: Int = 0; index < self.itemsTable.numberOfRows; ++index {
@@ -235,4 +298,5 @@ extension WERendevuDetailController {
         }
     }
 }
+
 

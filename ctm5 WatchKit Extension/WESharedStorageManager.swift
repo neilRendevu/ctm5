@@ -18,6 +18,7 @@ class WESharedStorageManager: NSObject {
     var fileManager: NSFileManager = NSFileManager.defaultManager()
     
     let sharedDefaultsLoggedInUserKey: String = "userServerObjectId"
+    let sharedDefaultsLoggedInUserName: String = "loggedInUserName"
     class var sharedInstance: WESharedStorageManager {
         struct Singleton {
             static let instance = WESharedStorageManager()

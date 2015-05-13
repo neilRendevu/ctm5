@@ -26,7 +26,12 @@ class WECommentRow: WEBaseRow {
     
     override func configure(model: WEBaseModel) -> WEDerivedImage? {
         if let comment = model as? WEComment {
-            if let text = comment.text { self.textLabel.setText(text)}
+            if let text = comment.text {
+                self.textLabel.setText(text)
+                self.textLabel.setHidden(false)
+            } else {
+                self.textLabel.setHidden(true)
+            }
             if let originatorName = comment.originatorName { self.originatorNameLabel.setText(originatorName)}
             if let createdAt = comment.createdAt {
                 self.createdAtLabel.setText(comment.dateFormatter.stringFromDate(createdAt))

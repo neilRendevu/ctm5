@@ -16,9 +16,9 @@ class ViewController: UIViewController {
     @IBAction func logInOutButtonPressed(sender: AnyObject) {
         if let sharedDefaults = NSUserDefaults(suiteName: self.manager.sharedStorageManager.appGroup) {
             if let loggedInUserServerId = sharedDefaults.objectForKey(self.manager.sharedStorageManager.sharedDefaultsLoggedInUserKey) as? String {
-                self.manager.logInOutUser(nil)
+                self.manager.logInOutUser(nil, loggedInUserName: nil)
             } else {
-                self.manager.logInOutUser("Goober")
+                self.manager.logInOutUser("SomeServerId", loggedInUserName: "Goober")
             }
             self.showLoginStatus()
         } else {
