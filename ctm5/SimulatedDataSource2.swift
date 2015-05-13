@@ -95,12 +95,17 @@ class SimulatedDataSource2: NSObject {
             item["latitude"] = latitude + 0.05 * Double(index)
             var longitude = item["longitude"] as! Double
             item["longitude"] = longitude + 0.05 * Double(index)
+            item["commentType"] = WECommentType.text.rawValue
             if (index == 0) || (index % 4 != 0) {
                 item["latitude"] = 0
                 item["longitude"] = 0
+            } else {
+                item["commentType"] = WECommentType.map.rawValue
             }
             if index % 5 != 0 {
                 item.removeValueForKey("imageId")
+            } else {
+                item["commentType"] = WECommentType.image.rawValue
             }
             
             

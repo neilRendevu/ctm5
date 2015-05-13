@@ -10,6 +10,7 @@ import Foundation
 import WatchKit
 
 class WECommentRow: WEBaseRow {
+    @IBOutlet weak var commenterGroup: WKInterfaceGroup!
     @IBOutlet weak var originatorNameLabel: WKInterfaceLabel!
     @IBOutlet weak var createdAtLabel: WKInterfaceLabel!
     @IBOutlet weak var textLabel: WKInterfaceLabel!
@@ -35,6 +36,9 @@ class WECommentRow: WEBaseRow {
             if let originatorName = comment.originatorName { self.originatorNameLabel.setText(originatorName)}
             if let createdAt = comment.createdAt {
                 self.createdAtLabel.setText(comment.dateFormatter.stringFromDate(createdAt))
+            }
+            if comment.commentType == WECommentType.privateComment {
+                self.commenterGroup.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1.0))
             }
             if (comment.latitude == 0.0) && (comment.longitude == 0.0) {
                 self.itemMap.setHidden(true)

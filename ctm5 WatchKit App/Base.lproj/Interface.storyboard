@@ -157,7 +157,7 @@
                         </group>
                         <group width="1" alignment="left" id="yXT-jM-0Nn">
                             <items>
-                                <button width="1" alignment="left" title="Request Added!" id="x5m-22-ZyE">
+                                <button width="1" alignment="left" title="Comment Added!" id="x5m-22-ZyE">
                                     <connections>
                                         <action selector="requestAddedButtonTapped" destination="gX5-79-kkw" id="wza-zF-Mgc"/>
                                     </connections>
@@ -196,6 +196,7 @@
                                         <color key="backgroundColor" red="0.21702133539999999" green="0.24965625280000001" blue="0.9272806187" alpha="1" colorSpace="calibratedRGB"/>
                                     </group>
                                     <connections>
+                                        <outlet property="commenterGroup" destination="h3V-A7-Mma" id="VaF-w6-y1v"/>
                                         <outlet property="createdAtLabel" destination="EwA-fP-bMw" id="smT-5i-vK8"/>
                                         <outlet property="itemImage" destination="rf2-pY-NeT" id="mvd-Df-NEw"/>
                                         <outlet property="itemMap" destination="5IN-0a-IOR" id="0yU-0a-AXs"/>
@@ -269,8 +270,8 @@
                     <items>
                         <group width="1" alignment="left" id="DQo-de-UmI">
                             <items>
-                                <label alignment="center" text="Private Message" id="xML-Ls-2Ow">
-                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                <label alignment="center" text="Private Message To" id="xML-Ls-2Ow">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                 </label>
                             </items>
                         </group>

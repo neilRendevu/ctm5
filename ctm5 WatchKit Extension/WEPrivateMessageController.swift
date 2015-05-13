@@ -49,9 +49,14 @@ class WEPrivateMessageController: WEBaseInterfaceController {
         if let privateComment = self.privateComment {
             if let sourceComment = privateComment.sourceComment {
                 if let originatorId = sourceComment.originatorId {
+                    if let originatorName = sourceComment.originatorName {
+                        self.targetNameLabel.setText(originatorName)
+                    }
+                    return
                 }
             }
         }
+        dismissController()
     }
     
     override func didDeactivate() {
