@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>53E6A4AE-3669-4EB8-90AD-7222DFCF0E07</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ctm5</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>47A4042F31025988105FB9265BF9CCD8E6FDE3EA</key>
+		<string>https://github.com/nweintraut/ctm5.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ctm5.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>47A4042F31025988105FB9265BF9CCD8E6FDE3EA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nweintraut/ctm5.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>47A4042F31025988105FB9265BF9CCD8E6FDE3EA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>47A4042F31025988105FB9265BF9CCD8E6FDE3EA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ctm5</string>
+		</dict>
+	</array>
+</dict>
+</plist>
