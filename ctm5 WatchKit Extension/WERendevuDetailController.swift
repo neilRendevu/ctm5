@@ -18,14 +18,42 @@ class WERendevuDetailController: WEBaseInterfaceController {
     @IBOutlet weak var networkLoadingStatusLabel: WKInterfaceLabel!
     @IBOutlet weak var noItemsGroup: WKInterfaceGroup!
     @IBOutlet weak var itemsTable: WKInterfaceTable!
+    @IBOutlet weak var commentAddedGroup: WKInterfaceGroup!
+
+    @IBAction func requestAddedButtonTapped() {
+        self.commentAddedGroup.setHidden(true)
+        self.showCommentAddedGroup = false
+    }
+    var showCommentAddedGroup: Bool = false
     
     var collection: WERendevu = WERendevu(plist: [NSObject : AnyObject]())
     var incommingCollection: WERendevu = WERendevu(plist: [NSObject : AnyObject]())
+    var collectionRequestPlist: [NSObject : AnyObject] {
+        get {
+            return self.populateRequestPlist(self.collection, requestType: WERequestType.RendevuWithComments)
+        }
+    }
+    func addACommentRequestPlist(commentText: String) -> [NSObject : AnyObject] {
+        var rendevu: WERendevu = self.collection
+        var rendevuPlist = rendevu.plist
+        rendevuPlist["requestType"] = WERequestType.CreateComment.rawValue
+        var commentPlist = [NSObject : AnyObject]()
+        commentPlist["text"] = commentText
+        commentPlist["originatorId"] = manager.loggedInUserServerId
+        var newItems = [ [NSObject : AnyObject] ]()
+        newItems.append( commentPlist )
+        rendevuPlist["items"] = newItems
+        return rendevuPlist
+    }
     
     @IBAction func mapButtonPressed() {
     }
     
     @IBAction func commentButtonPressed() {
+        var text: String = "Some comment text"
+        var rendevuPlist: [NSObject : AnyObject] = self.addACommentRequestPlist(text)
+        self.showCommentAddedGroup = true
+        reload(rendevuPlist)
     }
     
     @IBAction func refreshButtonPressed() {
@@ -36,6 +64,7 @@ class WERendevuDetailController: WEBaseInterfaceController {
         super.awakeWithContext(context)
         self.controllerIdentifier = "RendevuDetailController"
         self.rowName = "CommentRow"
+        self.commentAddedGroup.setHidden(true)
         if let rendevu = context as? WERendevu {
             self.collection = rendevu
             self.incommingCollection = rendevu
@@ -51,7 +80,7 @@ class WERendevuDetailController: WEBaseInterfaceController {
         if self.networkStatus == WENetworkStatus.Loaded {
             populateInterface()
         } else {
-            self.reload()
+            self.reload(self.collectionRequestPlist)
         }
         
     }
@@ -60,6 +89,7 @@ class WERendevuDetailController: WEBaseInterfaceController {
         if self.active || awake {
             self.noItemsGroup.setHidden(true)
             self.networkLoadingGroup.setHidden(true)
+
         }
     }
     func setAsLoading() {
@@ -78,6 +108,7 @@ class WERendevuDetailController: WEBaseInterfaceController {
             self.networkLoadingStatusLabel.setText("No Access")
             self.networkLoadingGroup.setHidden(false)
             self.collectionTitle.setHidden(true)
+            self.commentAddedGroup.setHidden(true)
         }
     }
     
@@ -94,14 +125,14 @@ class WERendevuDetailController: WEBaseInterfaceController {
             return false
         }
     }
-    func reload() {
+    func reload(userInfo: [NSObject : AnyObject]) {
         if self.networkStatus == WENetworkStatus.Loading { return }
-        self.hardReload()
+        self.hardReload(userInfo)
     }
     
     func reset() {
         self.checkLoginStatus()
-        self.reload()
+        self.reload(self.collectionRequestPlist)
     }
     
     func populateInterface() {
@@ -121,6 +152,10 @@ class WERendevuDetailController: WEBaseInterfaceController {
                     self.noItemsGroup.setHidden(false)
                 } else {
                     self.noItemsGroup.setHidden(true)
+                    if self.showCommentAddedGroup {
+                        self.commentAddedGroup.setHidden(false)
+                        self.showCommentAddedGroup = false
+                    }
                     for (index, item) in enumerate(newCollection.items) {
                         if self.active {
                             if let row = itemsTable.rowControllerAtIndex(index) as? WECommentRow {
@@ -138,11 +173,18 @@ class WERendevuDetailController: WEBaseInterfaceController {
             }
         }
     }
-
-    func hardReload() {
+    func addComment(commentText: String) {
+        var rendevu: WERendevu = self.collection
+        var rendevuPlist = rendevu.plist
+        rendevuPlist["requestType"] = WERequestType.CreateComment.rawValue
+        var commentPlist = [NSObject : AnyObject]()
+        commentPlist["text"] = commentText
+        commentPlist["originatorIdentifier"] = manager.loggedInUserServerId
+    }
+    func hardReload(userInfo: [NSObject : AnyObject]) {
         self.setAsLoading()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            var userInfo: [NSObject : AnyObject] = self.populateRequestPlist(self.collection, requestType: WERequestType.RendevuWithComments)
+            //var userInfo: [NSObject : AnyObject] = self.populateRequestPlist(self.collection, requestType: WERequestType.RendevuWithComments)
             if self.active {
                 WKInterfaceController.openParentApplication(userInfo , reply: { (plist: [NSObject: AnyObject]!, error: NSError!) -> Void in
                     if self.active {

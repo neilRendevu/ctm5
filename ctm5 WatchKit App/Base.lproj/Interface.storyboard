@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
@@ -155,6 +155,15 @@
                             </items>
                             <color key="backgroundColor" red="0.30421643809999999" green="1" blue="0.33335665689999999" alpha="1" colorSpace="calibratedRGB"/>
                         </group>
+                        <group width="1" alignment="left" id="yXT-jM-0Nn">
+                            <items>
+                                <button width="1" alignment="left" title="Request Added!" id="x5m-22-ZyE">
+                                    <connections>
+                                        <action selector="requestAddedButtonTapped" destination="gX5-79-kkw" id="wza-zF-Mgc"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                         <group width="1" alignment="left" id="Xkb-hg-UWZ">
                             <items>
                                 <label alignment="left" text="No Comments Yet!" id="Mia-Lw-JUi"/>
@@ -205,6 +214,7 @@
                     </items>
                     <connections>
                         <outlet property="collectionTitle" destination="e7U-xa-ZPe" id="6rv-bb-rk8"/>
+                        <outlet property="commentAddedGroup" destination="yXT-jM-0Nn" id="4ne-r6-ndq"/>
                         <outlet property="itemsTable" destination="MSH-Tw-ELf" id="o57-1f-O4U"/>
                         <outlet property="loginGroup" destination="d8g-gM-eOD" id="1q7-Wb-VMF"/>
                         <outlet property="mapCommentButtonGropu" destination="Wuh-8x-wyH" id="3Rh-60-GHk"/>

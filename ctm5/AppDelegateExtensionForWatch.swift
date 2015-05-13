@@ -96,7 +96,8 @@ class WERequestHandler {
         println("Need to implement getLoginId()")
     }
     func createComment(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
-        println("Need to implement CreateComment()")
+        self.collection.addAComment(plist)
+        getRendevuWithComments(plist, reply: reply)
     }
     func createRendevu(plist: [NSObject: AnyObject], reply: ([NSObject : AnyObject]!) -> Void) -> Void {
         println("Need to implement CreateComment()")

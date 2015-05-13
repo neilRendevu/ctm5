@@ -111,7 +111,7 @@ class SimulatedDataSource2: NSObject {
     func commentSeed() -> [NSObject : AnyObject] {
         var seed = [NSObject : AnyObject]()
         seed["cursor"] = Int(0)
-        seed["maxCount"] = Int(0)
+        seed["maxCount"] = Int(1)
         seed["createdAt"] = NSDate()
         seed["lastUpdated"] = NSDate()
         seed["location"] = "San Francisco"
@@ -146,19 +146,37 @@ extension SimulatedDataSource2: WatchAPIProtocol {
                         return item.plist
                     }
                 }
-                /*
-                if let index = objectIdentifier.toInt() {
-
-                    if items.count > index {
-                        return items[index].plist
-                    }
-                }
-*/
             }
         }
         return [NSObject : AnyObject]()
     }
     func retrieveImage(imageId: String) -> UIImage? {
         return UIImage(named: imageId)
+    }
+
+    func addAComment(requestPlist: [NSObject: AnyObject]) -> Void {
+        if let items = requestPlist["items"] as? [ [NSObject : AnyObject] ] {
+            if items.count > 0 {
+                var commentPlist = items[0]
+                commentPlist["cursor"] = Int(0)
+                commentPlist["maxCount"] = Int(1)
+                commentPlist["createdAt"] = NSDate()
+                commentPlist["lastUpdated"] = NSDate()
+                commentPlist["originatorName"] = "System"
+                commentPlist["objectIdentifier"] =  String(stringInterpolationSegment: NSDate.timeIntervalSinceReferenceDate())
+                var comment = WEComment(plist: commentPlist)
+                
+                if let rendevuCollection = self.collections["Public Rendevus"] {
+                    if let objectIdentifier = requestPlist["objectIdentifier"] as? String {
+                        let items = rendevuCollection.items
+                        for item in items {
+                            if item.objectIdentifier == objectIdentifier {
+                                item.items.insert(comment, atIndex: 0)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
